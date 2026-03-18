@@ -1,0 +1,151 @@
+/* ============================================================
+   pages.css  —  Interior page styles
+   Castle's Custom Homes
+   ============================================================ */
+
+/* ── Gallery page ──────────────────────────────────────────── */
+.gallery-filters { display: flex; gap: 8px; margin-bottom: clamp(24px,4vw,48px); flex-wrap: wrap; }
+.filter-btn {
+  font-family: var(--font-sans); font-size: 11px; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  padding: 10px clamp(14px,2vw,24px); border: 1px solid var(--stone);
+  background: transparent; color: var(--warm-gray); cursor: pointer; transition: all .2s;
+}
+.filter-btn.active, .filter-btn:hover { background: var(--crimson); border-color: var(--crimson); color: var(--white); }
+
+.gallery-full-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 4px; }
+.gallery-full-item { overflow: hidden; aspect-ratio: 4/3; cursor: pointer; position: relative; }
+.gallery-full-item img { width:100%; height:100%; object-fit:cover; filter:brightness(.88); transition: transform .6s cubic-bezier(.25,.46,.45,.94), filter .4s; }
+.gallery-full-item:hover img { transform: scale(1.05); filter: brightness(1); }
+.gallery-full-item-label { position:absolute; bottom:0; left:0; right:0; padding:22px 16px 12px; background:linear-gradient(to top,rgba(20,18,14,.85),transparent); opacity:0; transition:opacity .3s; }
+.gallery-full-item:hover .gallery-full-item-label { opacity: 1; }
+.gallery-full-item-label span { font-family:var(--font-serif); font-size:clamp(13px,1.3vw,16px); color:var(--white); font-weight:300; }
+
+/* ── For sale listings ─────────────────────────────────────── */
+.listings-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(18px,2.5vw,32px); }
+.listing-card { background: var(--white); border: 1px solid var(--stone); overflow: hidden; transition: box-shadow .3s, transform .3s; }
+.listing-card:hover { box-shadow: 0 8px 36px rgba(0,0,0,.1); transform: translateY(-3px); }
+.listing-img { position: relative; overflow: hidden; height: clamp(170px,22vw,280px); }
+.listing-img img { width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.25,.46,.45,.94); }
+.listing-card:hover .listing-img img { transform: scale(1.04); }
+.listing-badge { position:absolute; top:14px; left:14px; background:var(--crimson); color:var(--white); font-size:10px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; padding:5px 12px; }
+.listing-info  { padding: clamp(16px,2vw,26px); }
+.listing-price { font-family:var(--font-serif); font-size:clamp(20px,2.5vw,30px); font-weight:300; color:var(--dark); margin-bottom:6px; }
+.listing-address { font-size:clamp(12px,1.2vw,14px); font-weight:400; color:var(--mid); margin-bottom:10px; }
+.listing-specs { display:flex; gap:clamp(10px,2vw,22px); padding-top:10px; border-top:1px solid var(--stone); flex-wrap:wrap; }
+.listing-spec  { font-size:12px; color:var(--warm-gray); }
+.listing-spec strong { display:block; font-size:clamp(13px,1.4vw,16px); font-weight:500; color:var(--dark); margin-bottom:2px; }
+
+/* ── About page ────────────────────────────────────────────── */
+.team-grid { display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,60px); margin-top:clamp(36px,5vw,64px); }
+.team-photo { width:100%; height:clamp(260px,33vw,460px); object-fit:cover; object-position:top; margin-bottom:clamp(18px,2.5vw,28px); }
+.team-name  { font-family:var(--font-serif); font-size:clamp(22px,2.8vw,34px); font-weight:300; color:var(--dark); margin-bottom:4px; }
+.team-role  { font-size:11px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--crimson); margin-bottom:14px; }
+.team-bio   { font-size:clamp(13px,1.3vw,15px); font-weight:300; line-height:1.8; color:var(--mid); margin-bottom:16px; }
+.team-contact { font-size:13px; color:var(--warm-gray); line-height:1.8; }
+.team-contact a { color:var(--crimson); text-decoration:none; }
+.team-contact a:hover { text-decoration:underline; }
+
+.values-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--stone); margin-top:clamp(36px,5vw,64px); }
+.value-item  { background:var(--cream); padding:clamp(28px,4vw,52px) clamp(18px,2.5vw,36px); }
+.value-icon  { font-family:var(--font-serif); font-size:clamp(32px,4.5vw,52px); font-weight:300; font-style:italic; color:var(--crimson); opacity:.6; line-height:1; margin-bottom:16px; }
+.value-title { font-family:var(--font-serif); font-size:clamp(16px,2vw,22px); font-weight:400; color:var(--dark); margin-bottom:10px; }
+.value-desc  { font-size:clamp(12px,1.1vw,14px); font-weight:300; line-height:1.75; color:var(--warm-gray); }
+
+/* ── Financing page ────────────────────────────────────────── */
+.calc-wrap { background:var(--white); border:1px solid var(--stone); padding:clamp(24px,3.5vw,52px); }
+.calc-row  { display:grid; grid-template-columns:1fr 1fr; gap:clamp(12px,2vw,22px); margin-bottom:clamp(12px,2vw,22px); }
+.calc-field { display:flex; flex-direction:column; gap:7px; }
+.calc-field label { font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--warm-gray); }
+.calc-field input {
+  font-family:var(--font-sans); font-size:clamp(14px,1.5vw,16px); font-weight:300;
+  color:var(--dark); border:1px solid var(--stone); background:var(--cream);
+  padding:clamp(10px,1.2vw,14px) 14px; outline:none; width:100%; transition:border-color .2s;
+}
+.calc-field input:focus { border-color:var(--crimson); }
+.calc-result { background:var(--dark); padding:clamp(18px,2.5vw,30px) clamp(18px,2.5vw,32px); margin-top:clamp(18px,2.5vw,28px); display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+.calc-result-label { font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--warm-gray); margin-bottom:5px; }
+.calc-result-value { font-family:var(--font-serif); font-size:clamp(28px,4vw,44px); font-weight:300; color:var(--gold-light); }
+.calc-result-note  { font-size:11px; color:var(--warm-gray); max-width:200px; line-height:1.5; }
+
+.financing-options { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(14px,2vw,26px); margin-top:clamp(36px,5vw,56px); }
+.fin-card       { padding:clamp(22px,3vw,38px) clamp(16px,2.5vw,28px); border:1px solid var(--stone); background:var(--white); }
+.fin-card-title { font-family:var(--font-serif); font-size:clamp(16px,1.9vw,24px); font-weight:400; color:var(--dark); margin-bottom:10px; }
+.fin-card-desc  { font-size:clamp(12px,1.2vw,14px); font-weight:300; line-height:1.75; color:var(--warm-gray); }
+
+/* ── Contact page ──────────────────────────────────────────── */
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; }
+.contact-form-side { padding:clamp(44px,7vw,88px) clamp(28px,5.5vw,80px); background:var(--white); }
+.contact-info-side { padding:clamp(44px,7vw,88px) clamp(28px,5.5vw,80px); background:var(--dark); }
+.form-group { margin-bottom:clamp(14px,2vw,24px); }
+.form-group label { display:block; font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--warm-gray); margin-bottom:7px; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width:100%; font-family:var(--font-sans); font-size:clamp(13px,1.3vw,15px);
+  font-weight:300; color:var(--dark); border:1px solid var(--stone);
+  background:var(--cream); padding:clamp(10px,1.3vw,14px); outline:none;
+  transition:border-color .2s; resize:vertical;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color:var(--crimson); }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:clamp(10px,2vw,20px); }
+
+.contact-info-title { font-family:var(--font-serif); font-size:clamp(24px,3.5vw,42px); font-weight:300; color:var(--white); margin-bottom:clamp(24px,4vw,44px); line-height:1.2; }
+.contact-info-title em { font-style:italic; color:var(--gold-light); }
+.contact-detail { margin-bottom:clamp(18px,3vw,32px); }
+.contact-detail-label { font-size:10px; font-weight:500; letter-spacing:.2em; text-transform:uppercase; color:var(--warm-gray); margin-bottom:5px; }
+.contact-detail-value { font-family:var(--font-serif); font-size:clamp(15px,1.8vw,20px); font-weight:300; color:var(--white); line-height:1.5; }
+.contact-detail-value a { color:var(--white); text-decoration:none; transition:color .2s; }
+.contact-detail-value a:hover { color:var(--crimson-light); }
+.contact-hours { margin-top:clamp(24px,3.5vw,44px); padding-top:clamp(20px,3vw,36px); border-top:1px solid rgba(255,255,255,.1); }
+.hours-row { display:flex; justify-content:space-between; font-size:clamp(12px,1.2vw,14px); font-weight:300; color:rgba(255,255,255,.7); padding:8px 0; border-bottom:1px solid rgba(255,255,255,.06); }
+
+/* ── Remodel page ──────────────────────────────────────────── */
+.remodel-showcase { display:grid; grid-template-columns:1fr 1fr; gap:4px; margin-top:clamp(36px,5vw,64px); }
+.remodel-before-after { overflow:hidden; position:relative; aspect-ratio:16/10; }
+.remodel-before-after img { width:100%; height:100%; object-fit:cover; }
+.remodel-label      { position:absolute; top:14px; left:14px; background:var(--dark); color:var(--white); font-size:10px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; padding:5px 12px; }
+.remodel-label.after { background:var(--crimson); }
+
+/* ══════════════════════════════════════════════════════════════
+   INTERIOR PAGE RESPONSIVE
+══════════════════════════════════════════════════════════════ */
+
+/* Tablet landscape */
+@media (max-width: 1024px) {
+  .gallery-full-grid  { grid-template-columns: 1fr 1fr; }
+  .listings-grid      { grid-template-columns: 1fr 1fr; }
+  .team-grid          { grid-template-columns: 1fr 1fr; }
+  .values-grid        { grid-template-columns: 1fr 1fr; }
+  .financing-options  { grid-template-columns: 1fr 1fr; }
+  .contact-grid       { grid-template-columns: 1fr; }
+  .remodel-showcase   { grid-template-columns: 1fr 1fr; }
+  .calc-row           { grid-template-columns: 1fr 1fr; }
+}
+
+/* Tablet portrait */
+@media (max-width: 768px) {
+  .listings-grid      { grid-template-columns: 1fr 1fr; }
+  .values-grid        { grid-template-columns: 1fr 1fr; }
+}
+
+/* Large phone */
+@media (max-width: 480px) {
+  .gallery-full-grid  { grid-template-columns: 1fr 1fr; }
+  .listings-grid      { grid-template-columns: 1fr; }
+  .team-grid          { grid-template-columns: 1fr; }
+  .financing-options  { grid-template-columns: 1fr; }
+  .calc-row           { grid-template-columns: 1fr; }
+  .form-row           { grid-template-columns: 1fr; }
+  .remodel-showcase   { grid-template-columns: 1fr; }
+  .calc-result        { flex-direction: column; align-items: flex-start; }
+}
+
+/* Small phone */
+@media (max-width: 400px) {
+  .gallery-full-grid  { grid-template-columns: 1fr; }
+  .values-grid        { grid-template-columns: 1fr; }
+  .team-grid          { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,116 @@
+<!--
+  _nav.html — Navigation partial
+  Castle's Custom Homes
+
+  USAGE: Copy this block into every page's <body>, just after <body>.
+  The data-nav-style attribute on <body> controls transparency:
+    - data-nav-style="hero"  → transparent on load, darkens on scroll (Home page)
+    - data-nav-style="solid" → always dark (all other pages)
+
+  If you add a new page, just add it to the sub-menu list below.
+-->
+
+<nav class="site-nav" id="main-nav">
+  <a href="../index.html" class="nav-logo">
+    Castle<span class="apostrophe">'</span>s Custom Homes
+  </a>
+  <div class="nav-right">
+    <a href="tel:2083091547" class="nav-phone">(208) 309-1547</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Full-screen overlay menu -->
+<div class="nav-overlay" id="nav-overlay" role="dialog" aria-label="Navigation menu">
+  <div class="overlay-accent"></div>
+  <div class="nav-overlay-inner">
+    <ul class="overlay-menu">
+
+      <!-- Build With Us -->
+      <li class="overlay-item">
+        <div class="overlay-item-header">
+          <span class="overlay-link">Build With Us</span>
+          <button class="overlay-toggle" aria-label="Expand Build With Us" onclick="toggleSub(this)">+</button>
+        </div>
+        <ul class="sub-menu">
+          <li><a href="pages/residential.html" onclick="closeNav()">Residential</a></li>
+          <li><a href="pages/your-lot.html"    onclick="closeNav()">Build on Your Lot</a></li>
+          <li><a href="pages/commercial.html"  onclick="closeNav()">Commercial</a></li>
+          <li><a href="pages/remodel.html"     onclick="closeNav()">Remodels</a></li>
+        </ul>
+      </li>
+
+      <!-- Gallery -->
+      <li class="overlay-item">
+        <div class="overlay-item-header">
+          <a href="pages/gallery.html" class="overlay-link" onclick="closeNav()">Gallery</a>
+        </div>
+      </li>
+
+      <!-- For Sale -->
+      <li class="overlay-item">
+        <div class="overlay-item-header">
+          <span class="overlay-link">For Sale</span>
+          <button class="overlay-toggle" aria-label="Expand For Sale" onclick="toggleSub(this)">+</button>
+        </div>
+        <ul class="sub-menu">
+          <li><a href="pages/for-sale.html" onclick="closeNav()">Available Homes</a></li>
+          <li><a href="pages/for-sale.html" onclick="closeNav()">Build to Suit</a></li>
+        </ul>
+      </li>
+
+      <!-- About -->
+      <li class="overlay-item">
+        <div class="overlay-item-header">
+          <span class="overlay-link">About</span>
+          <button class="overlay-toggle" aria-label="Expand About" onclick="toggleSub(this)">+</button>
+        </div>
+        <ul class="sub-menu">
+          <li><a href="pages/about.html" onclick="closeNav()">Meet the Castles</a></li>
+          <li><a href="pages/about.html" onclick="closeNav()">Our Story</a></li>
+          <li><a href="pages/about.html" onclick="closeNav()">Community</a></li>
+          <li><a href="pages/about.html" onclick="closeNav()">Our Partners</a></li>
+        </ul>
+      </li>
+
+      <!-- Financing -->
+      <li class="overlay-item">
+        <div class="overlay-item-header">
+          <span class="overlay-link">Financing</span>
+          <button class="overlay-toggle" aria-label="Expand Financing" onclick="toggleSub(this)">+</button>
+        </div>
+        <ul class="sub-menu">
+          <li><a href="pages/financing.html" onclick="closeNav()">Mortgage Calculator</a></li>
+          <li><a href="pages/financing.html" onclick="closeNav()">Financing Options</a></li>
+        </ul>
+      </li>
+
+      <!-- Contact -->
+      <li class="overlay-item">
+        <div class="overlay-item-header">
+          <a href="pages/contact.html" class="overlay-link" onclick="closeNav()">Contact</a>
+        </div>
+      </li>
+
+    </ul>
+
+    <div class="overlay-footer">
+      <div>
+        <p class="overlay-contact-label">Design & Estimates</p>
+        <p class="overlay-contact-val">
+          <a href="mailto:kyle@castlescustomhomes.com">Kyle@CastlesCustomHomes.com</a>
+        </p>
+      </div>
+      <div>
+        <p class="overlay-contact-label">Follow Us</p>
+        <div class="overlay-socials">
+          <a href="https://instagram.com/castlescustomhomes" class="overlay-social" target="_blank">IG</a>
+          <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="overlay-social" target="_blank">FB</a>
+          <a href="https://twitter.com/castlescustom" class="overlay-social" target="_blank">TW</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

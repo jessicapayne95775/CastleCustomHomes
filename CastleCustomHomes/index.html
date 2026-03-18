@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Castle's Custom Homes | Twin Falls, Idaho</title>
+  <meta name="description" content="Castle's Custom Homes — custom home builders serving Twin Falls and the Magic Valley, Idaho. Family-owned, quality-built.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body data-nav-style="hero">
+
+  <!-- ── Navigation ── -->
+  <nav class="site-nav" id="main-nav">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/images/CastleLogo.png" alt="Castle's Custom Homes Logo">
+    </a>
+    <div class="nav-right">
+      <a href="tel:2083091547" class="nav-phone">(208) 309-1547</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="nav-overlay" role="dialog" aria-label="Navigation menu">
+    <div class="overlay-accent"></div>
+    <div class="nav-overlay-inner">
+      <ul class="overlay-menu">
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">Build With Us</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="pages/residential.html" onclick="closeNav()">Residential</a></li>
+            <li><a href="pages/your-lot.html"    onclick="closeNav()">Build on Your Lot</a></li>
+            <li><a href="pages/commercial.html"  onclick="closeNav()">Commercial</a></li>
+            <li><a href="pages/remodel.html"     onclick="closeNav()">Remodels</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a href="pages/gallery.html" class="overlay-link" onclick="closeNav()">Gallery</a>
+          </div>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">For Sale</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="pages/for-sale.html" onclick="closeNav()">Available Homes</a></li>
+            <li><a href="pages/for-sale.html" onclick="closeNav()">Build to Suit</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">About</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="pages/about.html" onclick="closeNav()">Meet the Castles</a></li>
+            <li><a href="pages/about.html" onclick="closeNav()">Our Story</a></li>
+            <li><a href="pages/about.html" onclick="closeNav()">Community</a></li>
+            <li><a href="pages/about.html" onclick="closeNav()">Our Partners</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">Financing</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="pages/financing.html" onclick="closeNav()">Mortgage Calculator</a></li>
+            <li><a href="pages/financing.html" onclick="closeNav()">Financing Options</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a href="pages/contact.html" class="overlay-link" onclick="closeNav()">Contact</a>
+          </div>
+        </li>
+      </ul>
+      <div class="overlay-footer">
+        <div>
+          <p class="overlay-contact-label">Design & Estimates</p>
+          <p class="overlay-contact-val"><a href="mailto:kyle@castlescustomhomes.com">Kyle@CastlesCustomHomes.com</a></p>
+        </div>
+        <div>
+          <p class="overlay-contact-label">Follow Us</p>
+          <div class="overlay-socials">
+            <a href="https://instagram.com/castlescustomhomes" class="overlay-social" target="_blank">IG</a>
+            <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="overlay-social" target="_blank">FB</a>
+            <a href="https://twitter.com/castlescustom" class="overlay-social" target="_blank">TW</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Twin Falls & Magic Valley, Idaho</p>
+      <h1>Homes Built<br>with <em>Intention</em></h1>
+      <p class="hero-sub">Castle's Custom Homes crafts residences that reflect your vision—quality construction, honest process, lasting craft for the families of Idaho.</p>
+      <div class="hero-actions">
+        <a href="pages/contact.html" class="btn-primary">Start Your Build</a>
+        <a href="pages/gallery.html" class="btn-ghost">View Our Work</a>
+      </div>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+  </section>
+
+  <!-- ── Stats ── -->
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-number">20+</div><div class="stat-label">Years of Experience</div></div>
+    <div class="stat-item"><div class="stat-number">200+</div><div class="stat-label">Homes Completed</div></div>
+    <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Client Satisfaction</div></div>
+    <div class="stat-item"><div class="stat-number">1</div><div class="stat-label">Family-Owned Builder</div></div>
+  </div>
+
+  <!-- ── Services ── -->
+  <section class="services">
+    <div class="services-header reveal">
+      <div>
+        <p class="section-eyebrow">What We Build</p>
+        <h2 class="section-title">Crafted for <em>Every</em><br>Stage of Life</h2>
+      </div>
+      <p class="services-intro">From custom residential homes to commercial spaces and complete remodels, Castle's brings the same care and quality to every project in the Magic Valley.</p>
+    </div>
+    <div class="services-grid">
+      <a href="pages/residential.html" class="service-card reveal">
+        <div class="service-card-bg" style="background-image:url('assets/images/gallaryExterior.avif')"></div>
+        <div class="service-card-overlay"></div>
+        <div class="service-card-content">
+          <p class="service-num">01</p>
+          <h3 class="service-title">Custom Residential</h3>
+          <p class="service-desc">From initial design to the day you walk through your front door, we guide you through every step.</p>
+          <span class="service-link">Learn More →</span>
+        </div>
+      </a>
+      <a href="pages/your-lot.html" class="service-card reveal reveal-delay-1">
+        <div class="service-card-bg" style="background-image:url('assets/images/Lot.png')"></div>
+        <div class="service-card-overlay"></div>
+        <div class="service-card-content">
+          <p class="service-num">02</p>
+          <h3 class="service-title">Build on Your Lot</h3>
+          <p class="service-desc">Already found your perfect piece of Idaho? We'll bring your vision to life on land you already love.</p>
+          <span class="service-link">Learn More →</span>
+        </div>
+      </a>
+      <a href="pages/remodel.html" class="service-card reveal reveal-delay-2">
+        <div class="service-card-bg" style="background-image:url('assets/images/remodel.avif')"></div>
+        <div class="service-card-overlay"></div>
+        <div class="service-card-content">
+          <p class="service-num">03</p>
+          <h3 class="service-title">Remodels</h3>
+          <p class="service-desc">Love your property but need more space or an updated style? We transform your existing home.</p>
+          <span class="service-link">Learn More →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── About Split ── -->
+  <div class="about-split">
+    <div class="about-portraits">
+      <div class="about-portrait">
+        <img src="assets/images/kyleCastle.png" alt="Kyle Castle, Owner">
+        <div class="about-portrait-caption">
+          <p class="about-portrait-name">Kyle Castle</p>
+          <p class="about-portrait-title">Owner</p>
+        </div>
+      </div>
+      <div class="about-portrait">
+        <img src="assets/images/tammyCastle.png" alt="Tammy Castle, Vice President">
+        <div class="about-portrait-caption">
+          <p class="about-portrait-name">Tammy Castle</p>
+          <p class="about-portrait-title">Vice President</p>
+        </div>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="reveal">
+        <p class="section-eyebrow">Our Story</p>
+        <h2 class="section-title">Meet<br><em>The Castles</em></h2>
+        <p class="about-body">Kyle and Tammy Castle have spent years building more than structures—they've built trust with families across Twin Falls and the Magic Valley. As small business owners themselves, they understand that every project is more than a home.</p>
+        <p class="about-body" style="margin-top:-8px;">From the first consultation to the final walkthrough, you'll work directly with Kyle and Tammy. That personal commitment is the foundation of everything Castle's Custom Homes stands for.</p>
+        <a href="pages/about.html" class="btn-primary" style="display:inline-block;margin-bottom:36px;">Meet the Team</a>
+      </div>
+      <div class="about-signature reveal reveal-delay-1">
+        Kyle &amp; Tammy Castle
+        <small>Founders, Castle's Custom Homes</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Process ── -->
+  <section class="process">
+    <div class="reveal">
+      <p class="section-eyebrow" style="color:var(--crimson-light);">How We Work</p>
+      <h2 class="section-title light">A Smooth <em>Process,</em><br>From First Call to Move-In</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal"><div class="process-step-num">01</div><h3 class="process-step-title">Initial Consultation</h3><p class="process-step-desc">We sit down to understand your vision, needs, timeline, and budget. No obligation—just an honest conversation about what's possible.</p></div>
+      <div class="process-step reveal reveal-delay-1"><div class="process-step-num">02</div><h3 class="process-step-title">Design & Planning</h3><p class="process-step-desc">Working with your chosen floor plan or your own design, we finalize selections and build a detailed plan before breaking ground.</p></div>
+      <div class="process-step reveal reveal-delay-2"><div class="process-step-num">03</div><h3 class="process-step-title">Construction</h3><p class="process-step-desc">Our skilled team builds your home with quality materials and meticulous attention to detail—keeping you updated every step of the way.</p></div>
+      <div class="process-step reveal reveal-delay-3"><div class="process-step-num">04</div><h3 class="process-step-title">Move-In Day</h3><p class="process-step-desc">We walk through every detail together before you take the keys, making sure every element meets your expectations.</p></div>
+    </div>
+  </section>
+
+  <!-- ── Gallery Preview ── -->
+  <section class="gallery-home">
+    <div class="gallery-header reveal">
+      <div><p class="section-eyebrow">Portfolio</p><h2 class="section-title">Our Finest <em>Work</em></h2></div>
+      <a href="pages/gallery.html" class="btn-ghost">View Full Gallery</a>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="assets/images/exterior3.png" alt="Custom home exterior"></div>
+      <div class="gallery-item"><img src="assets/images/CustomKitchen.avif" alt="Kitchen interior"></div>
+      <div class="gallery-item"><img src="assets/images/fireplace.png" alt="Living room"></div>
+      <div class="gallery-item"><img src="assets/images/exterior4.png" alt="Luxury home front"></div>
+      <div class="gallery-item"><img src="assets/images/outside.png" alt="Home exterior"></div>
+    </div>
+  </section>
+
+  <!-- ── Testimonials ── -->
+  <section class="testimonials">
+    <p class="section-eyebrow center">What Clients Say</p>
+    <h2 class="section-title" style="margin-bottom:0;">Built on <em>Trust</em></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal"><p class="testimonial-text">Working with Kyle and Tammy was an absolute pleasure. They were transparent throughout the entire build and the quality of our home exceeded every expectation.</p><div class="testimonial-divider"></div><p class="testimonial-author">The Henderson Family</p><p class="testimonial-location">Twin Falls, Idaho</p></div>
+      <div class="testimonial-card reveal reveal-delay-1"><p class="testimonial-text">Castle's built our commercial space on time and on budget. As fellow small business owners, Kyle and Tammy truly understood what we needed and delivered perfectly.</p><div class="testimonial-divider"></div><p class="testimonial-author">James & Carla Merritt</p><p class="testimonial-location">Magic Valley, Idaho</p></div>
+      <div class="testimonial-card reveal reveal-delay-2"><p class="testimonial-text">From our first meeting to move-in day, we felt like we were building with family. The process was seamless and our home is everything we dreamed it would be.</p><div class="testimonial-divider"></div><p class="testimonial-author">The Ramirez Family</p><p class="testimonial-location">Twin Falls, Idaho</p></div>
+    </div>
+  </section>
+
+  <!-- ── CTA Band ── -->
+  <div class="cta-band">
+    <div class="cta-image" style="background-image:url('assets/images/Location.png');background-size:cover;background-position:center;"></div>
+    <div class="cta-content">
+      <p class="section-eyebrow" style="color:var(--crimson-light);">Ready to Build?</p>
+      <h2 class="section-title light" style="margin-bottom:20px;">Let's Start Your <em>Story</em></h2>
+      <p class="cta-body">Tell us about your vision and we'll schedule a free, no-obligation consultation to talk through the possibilities.</p>
+      <div class="cta-actions">
+        <a href="pages/contact.html" class="btn-primary">Get In Touch</a>
+        <a href="tel:2083091547" class="btn-outline-light">Call (208) 309-1547</a>
+      </div>
+      <div class="cta-info">
+        <div><p class="cta-info-label">Address</p><p class="cta-info-value">1334 Falls Ave East<br><span style="font-size:14px;color:var(--warm-gray);">Twin Falls, ID 83301</span></p></div>
+        <div><p class="cta-info-label">Financing</p><p class="cta-info-value" style="font-size:15px;">Tammy@CastlesCustomHomes.com</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <p class="footer-brand">Castle<span>'</span>s Custom Homes</p>
+        <p class="footer-tagline">Quality builders serving Twin Falls and the Magic Valley, Idaho. Family-owned, locally rooted, community proud.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/castlescustomhomes" class="footer-social" target="_blank">IG</a>
+          <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="footer-social" target="_blank">FB</a>
+          <a href="https://twitter.com/castlescustom" class="footer-social" target="_blank">TW</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Services</p>
+        <ul class="footer-links">
+          <li><a href="pages/residential.html">Custom Residential</a></li>
+          <li><a href="pages/your-lot.html">Build on Your Lot</a></li>
+          <li><a href="pages/commercial.html">Commercial</a></li>
+          <li><a href="pages/remodel.html">Remodels</a></li>
+          <li><a href="pages/for-sale.html">For Sale</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Company</p>
+        <ul class="footer-links">
+          <li><a href="pages/about.html">About Us</a></li>
+          <li><a href="pages/about.html">Meet the Castles</a></li>
+          <li><a href="pages/gallery.html">Gallery</a></li>
+          <li><a href="pages/financing.html">Financing</a></li>
+          <li><a href="pages/contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Quick Links</p>
+        <ul class="footer-links">
+          <li><a href="pages/financing.html">Mortgage Calculator</a></li>
+          <li><a href="pages/contact.html">Get a Quote</a></li>
+          <li><a href="http://www.castlescornercorp.com" target="_blank">Castle's Corner Stores</a></li>
+          <li><a href="tel:2083091547">(208) 309-1547</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 Castle Corner Corp. All rights reserved.</p>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/reveal.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commercial Construction | Castle's Custom Homes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body data-nav-style="solid">
+  <nav class="site-nav" id="main-nav">
+    <a href="../index.html" class="nav-logo">Castle<span class="apostrophe">'</span>s Custom Homes</a>
+    <div class="nav-right">
+      <a href="tel:2083091547" class="nav-phone">(208) 309-1547</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay" role="dialog" aria-label="Navigation menu">
+    <div class="overlay-accent"></div>
+    <div class="nav-overlay-inner">
+      <ul class="overlay-menu">
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">Build With Us</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="residential.html" onclick="closeNav()">Residential</a></li>
+            <li><a href="your-lot.html"    onclick="closeNav()">Build on Your Lot</a></li>
+            <li><a href="commercial.html"  onclick="closeNav()">Commercial</a></li>
+            <li><a href="remodel.html"     onclick="closeNav()">Remodels</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a href="gallery.html" class="overlay-link" onclick="closeNav()">Gallery</a>
+          </div>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">For Sale</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="for-sale.html" onclick="closeNav()">Available Homes</a></li>
+            <li><a href="for-sale.html" onclick="closeNav()">Build to Suit</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">About</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="about.html" onclick="closeNav()">Meet the Castles</a></li>
+            <li><a href="about.html" onclick="closeNav()">Our Story</a></li>
+            <li><a href="about.html" onclick="closeNav()">Community</a></li>
+            <li><a href="about.html" onclick="closeNav()">Our Partners</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">Financing</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="financing.html" onclick="closeNav()">Mortgage Calculator</a></li>
+            <li><a href="financing.html" onclick="closeNav()">Financing Options</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a href="contact.html" class="overlay-link" onclick="closeNav()">Contact</a>
+          </div>
+        </li>
+      </ul>
+      <div class="overlay-footer">
+        <div>
+          <p class="overlay-contact-label">Design & Estimates</p>
+          <p class="overlay-contact-val"><a href="mailto:kyle@castlescustomhomes.com">Kyle@CastlesCustomHomes.com</a></p>
+        </div>
+        <div>
+          <p class="overlay-contact-label">Follow Us</p>
+          <div class="overlay-socials">
+            <a href="https://instagram.com/castlescustomhomes" class="overlay-social" target="_blank">IG</a>
+            <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="overlay-social" target="_blank">FB</a>
+            <a href="https://twitter.com/castlescustom" class="overlay-social" target="_blank">TW</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80')"></div>
+    <div class="page-hero-content">
+      <p class="page-hero-eyebrow">Build With Us</p>
+      <h1>Commercial<br><em>Construction</em></h1>
+      <p>As small business owners themselves, Kyle and Tammy understand what it takes to build a space that works as hard as you do.</p>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="two-col">
+      <div class="col-image reveal">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Commercial interior">
+        <div class="col-image-accent"></div>
+      </div>
+      <div class="col-text reveal reveal-delay-1">
+        <p class="section-eyebrow">Commercial Projects</p>
+        <h2 class="section-title">Built for<br><em>Business</em></h2>
+        <p>Whether you're opening a retail space, professional office, or specialty facility, Castle's brings the same integrity and craftsmanship to commercial work that has defined our residential reputation.</p>
+        <p>We understand that commercial construction directly impacts your bottom line. That's why we prioritize on-schedule delivery, transparent budgeting, and quality that lasts.</p>
+        <ul class="feature-list">
+          <li>Retail, office, and mixed-use construction</li>
+          <li>Tenant improvements and build-outs</li>
+          <li>On-schedule delivery—we respect your opening date</li>
+          <li>ADA compliance and code expertise</li>
+          <li>Local contractor relationships for best pricing</li>
+        </ul>
+        <a href="contact.html" class="btn-primary">Discuss Your Project</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section dark">
+    <div class="reveal">
+      <p class="section-eyebrow" style="color:var(--crimson-light);">Why Castle's</p>
+      <h2 class="section-title light">Small Business <em>Owners</em><br>Building for Small Business Owners</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card dark-card reveal"><div class="card-num">01</div><h3>We Get It</h3><p>Kyle and Tammy run Castle's Corner Corp as well. They know the pressure of commercial construction firsthand.</p></div>
+      <div class="card dark-card reveal reveal-delay-1"><div class="card-num">02</div><h3>Honest Budgets</h3><p>No hidden costs, no bait-and-switch pricing. You'll know exactly what you're spending before a single nail is driven.</p></div>
+      <div class="card dark-card reveal reveal-delay-2"><div class="card-num">03</div><h3>Local Relationships</h3><p>Our network of subcontractors and suppliers across the Magic Valley means competitive pricing without compromising quality.</p></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <p class="footer-brand">Castle<span>'</span>s Custom Homes</p>
+        <p class="footer-tagline">Quality builders serving Twin Falls and the Magic Valley, Idaho. Family-owned, locally rooted, community proud.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/castlescustomhomes" class="footer-social" target="_blank">IG</a>
+          <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="footer-social" target="_blank">FB</a>
+          <a href="https://twitter.com/castlescustom" class="footer-social" target="_blank">TW</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Services</p>
+        <ul class="footer-links">
+          <li><a href="residential.html">Custom Residential</a></li>
+          <li><a href="your-lot.html">Build on Your Lot</a></li>
+          <li><a href="commercial.html">Commercial</a></li>
+          <li><a href="remodel.html">Remodels</a></li>
+          <li><a href="for-sale.html">For Sale</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Company</p>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html">Meet the Castles</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="financing.html">Financing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Quick Links</p>
+        <ul class="footer-links">
+          <li><a href="financing.html">Mortgage Calculator</a></li>
+          <li><a href="contact.html">Get a Quote</a></li>
+          <li><a href="http://www.castlescornercorp.com" target="_blank">Castle's Corner Stores</a></li>
+          <li><a href="tel:2083091547">(208) 309-1547</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 Castle Corner Corp. All rights reserved.</p>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script src="../js/reveal.js"></script>
+</body>
+</html>

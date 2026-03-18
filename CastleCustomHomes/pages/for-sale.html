@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homes For Sale | Castle's Custom Homes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body data-nav-style="solid">
+  <nav class="site-nav" id="main-nav">
+    <a href="../index.html" class="nav-logo">Castle<span class="apostrophe">'</span>s Custom Homes</a>
+    <div class="nav-right">
+      <a href="tel:2083091547" class="nav-phone">(208) 309-1547</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay" role="dialog" aria-label="Navigation menu">
+    <div class="overlay-accent"></div>
+    <div class="nav-overlay-inner">
+      <ul class="overlay-menu">
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">Build With Us</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="residential.html" onclick="closeNav()">Residential</a></li>
+            <li><a href="your-lot.html"    onclick="closeNav()">Build on Your Lot</a></li>
+            <li><a href="commercial.html"  onclick="closeNav()">Commercial</a></li>
+            <li><a href="remodel.html"     onclick="closeNav()">Remodels</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a href="gallery.html" class="overlay-link" onclick="closeNav()">Gallery</a>
+          </div>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">For Sale</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="for-sale.html" onclick="closeNav()">Available Homes</a></li>
+            <li><a href="for-sale.html" onclick="closeNav()">Build to Suit</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">About</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="about.html" onclick="closeNav()">Meet the Castles</a></li>
+            <li><a href="about.html" onclick="closeNav()">Our Story</a></li>
+            <li><a href="about.html" onclick="closeNav()">Community</a></li>
+            <li><a href="about.html" onclick="closeNav()">Our Partners</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">Financing</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="financing.html" onclick="closeNav()">Mortgage Calculator</a></li>
+            <li><a href="financing.html" onclick="closeNav()">Financing Options</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a href="contact.html" class="overlay-link" onclick="closeNav()">Contact</a>
+          </div>
+        </li>
+      </ul>
+      <div class="overlay-footer">
+        <div>
+          <p class="overlay-contact-label">Design & Estimates</p>
+          <p class="overlay-contact-val"><a href="mailto:kyle@castlescustomhomes.com">Kyle@CastlesCustomHomes.com</a></p>
+        </div>
+        <div>
+          <p class="overlay-contact-label">Follow Us</p>
+          <div class="overlay-socials">
+            <a href="https://instagram.com/castlescustomhomes" class="overlay-social" target="_blank">IG</a>
+            <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="overlay-social" target="_blank">FB</a>
+            <a href="https://twitter.com/castlescustom" class="overlay-social" target="_blank">TW</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=80')"></div>
+    <div class="page-hero-content">
+      <p class="page-hero-eyebrow">Move-In Ready</p>
+      <h1>Homes<br><em>For Sale</em></h1>
+      <p>Browse our available move-in ready homes and build-to-suit opportunities across the Magic Valley.</p>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="reveal" style="margin-bottom:48px;">
+      <p class="section-eyebrow">Available Now</p>
+      <h2 class="section-title">Find Your<br><em>Perfect Home</em></h2>
+    </div>
+    <div class="listings-grid">
+      <div class="listing-card reveal">
+        <div class="listing-img"><img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=700&q=80" alt="Home for sale"><div class="listing-badge">For Sale</div></div>
+        <div class="listing-info">
+          <p class="listing-price">$489,000</p>
+          <p class="listing-address">2841 Ridgeline Dr, Twin Falls, ID 83301</p>
+          <div class="listing-specs">
+            <div class="listing-spec"><strong>4</strong>Beds</div>
+            <div class="listing-spec"><strong>2.5</strong>Baths</div>
+            <div class="listing-spec"><strong>2,480</strong>Sq Ft</div>
+          </div>
+        </div>
+      </div>
+      <div class="listing-card reveal reveal-delay-1">
+        <div class="listing-img"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80" alt="Build to suit"><div class="listing-badge">Build to Suit</div></div>
+        <div class="listing-info">
+          <p class="listing-price">From $420,000</p>
+          <p class="listing-address">Lot 14, Canyon Ridge Estates, Kimberly, ID</p>
+          <div class="listing-specs">
+            <div class="listing-spec"><strong>3–5</strong>Beds</div>
+            <div class="listing-spec"><strong>2–3</strong>Baths</div>
+            <div class="listing-spec"><strong>Customize</strong>Sq Ft</div>
+          </div>
+        </div>
+      </div>
+      <div class="listing-card reveal reveal-delay-2">
+        <div class="listing-img"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80" alt="Home for sale 3"><div class="listing-badge">For Sale</div></div>
+        <div class="listing-info">
+          <p class="listing-price">$567,500</p>
+          <p class="listing-address">1092 Blue Lakes Blvd N, Twin Falls, ID 83301</p>
+          <div class="listing-specs">
+            <div class="listing-spec"><strong>5</strong>Beds</div>
+            <div class="listing-spec"><strong>3</strong>Baths</div>
+            <div class="listing-spec"><strong>3,100</strong>Sq Ft</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:56px;" class="reveal">
+      <p style="font-size:15px;font-weight:300;color:var(--warm-gray);margin-bottom:24px;">Don't see what you're looking for? We can build it.</p>
+      <a href="contact.html" class="btn-primary">Talk to Us About a Custom Build</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <p class="footer-brand">Castle<span>'</span>s Custom Homes</p>
+        <p class="footer-tagline">Quality builders serving Twin Falls and the Magic Valley, Idaho. Family-owned, locally rooted, community proud.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/castlescustomhomes" class="footer-social" target="_blank">IG</a>
+          <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="footer-social" target="_blank">FB</a>
+          <a href="https://twitter.com/castlescustom" class="footer-social" target="_blank">TW</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Services</p>
+        <ul class="footer-links">
+          <li><a href="residential.html">Custom Residential</a></li>
+          <li><a href="your-lot.html">Build on Your Lot</a></li>
+          <li><a href="commercial.html">Commercial</a></li>
+          <li><a href="remodel.html">Remodels</a></li>
+          <li><a href="for-sale.html">For Sale</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Company</p>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html">Meet the Castles</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="financing.html">Financing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Quick Links</p>
+        <ul class="footer-links">
+          <li><a href="financing.html">Mortgage Calculator</a></li>
+          <li><a href="contact.html">Get a Quote</a></li>
+          <li><a href="http://www.castlescornercorp.com" target="_blank">Castle's Corner Stores</a></li>
+          <li><a href="tel:2083091547">(208) 309-1547</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 Castle Corner Corp. All rights reserved.</p>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script src="../js/reveal.js"></script>
+</body>
+</html>

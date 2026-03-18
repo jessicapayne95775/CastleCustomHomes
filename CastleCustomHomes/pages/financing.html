@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financing | Castle's Custom Homes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body data-nav-style="solid">
+  <nav class="site-nav" id="main-nav">
+    <a href="../index.html" class="nav-logo">Castle<span class="apostrophe">'</span>s Custom Homes</a>
+    <div class="nav-right">
+      <a href="tel:2083091547" class="nav-phone">(208) 309-1547</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay" role="dialog" aria-label="Navigation menu">
+    <div class="overlay-accent"></div>
+    <div class="nav-overlay-inner">
+      <ul class="overlay-menu">
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">Build With Us</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="residential.html" onclick="closeNav()">Residential</a></li>
+            <li><a href="your-lot.html"    onclick="closeNav()">Build on Your Lot</a></li>
+            <li><a href="commercial.html"  onclick="closeNav()">Commercial</a></li>
+            <li><a href="remodel.html"     onclick="closeNav()">Remodels</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a href="gallery.html" class="overlay-link" onclick="closeNav()">Gallery</a>
+          </div>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">For Sale</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="for-sale.html" onclick="closeNav()">Available Homes</a></li>
+            <li><a href="for-sale.html" onclick="closeNav()">Build to Suit</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">About</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="about.html" onclick="closeNav()">Meet the Castles</a></li>
+            <li><a href="about.html" onclick="closeNav()">Our Story</a></li>
+            <li><a href="about.html" onclick="closeNav()">Community</a></li>
+            <li><a href="about.html" onclick="closeNav()">Our Partners</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <span class="overlay-link">Financing</span>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="financing.html" onclick="closeNav()">Mortgage Calculator</a></li>
+            <li><a href="financing.html" onclick="closeNav()">Financing Options</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a href="contact.html" class="overlay-link" onclick="closeNav()">Contact</a>
+          </div>
+        </li>
+      </ul>
+      <div class="overlay-footer">
+        <div>
+          <p class="overlay-contact-label">Design & Estimates</p>
+          <p class="overlay-contact-val"><a href="mailto:kyle@castlescustomhomes.com">Kyle@CastlesCustomHomes.com</a></p>
+        </div>
+        <div>
+          <p class="overlay-contact-label">Follow Us</p>
+          <div class="overlay-socials">
+            <a href="https://instagram.com/castlescustomhomes" class="overlay-social" target="_blank">IG</a>
+            <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="overlay-social" target="_blank">FB</a>
+            <a href="https://twitter.com/castlescustom" class="overlay-social" target="_blank">TW</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=1600&q=80')"></div>
+    <div class="page-hero-content">
+      <p class="page-hero-eyebrow">Get Started</p>
+      <h1>Financing Your<br><em>Dream Home</em></h1>
+      <p>Building a custom home is one of the biggest investments of your life. Tammy Castle will walk you through every financing option to make it a reality.</p>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="two-col">
+      <div class="reveal">
+        <p class="section-eyebrow">Mortgage Calculator</p>
+        <h2 class="section-title" style="margin-bottom:36px;">Estimate Your<br><em>Monthly Payment</em></h2>
+        <div class="calc-wrap">
+          <div class="calc-row">
+            <div class="calc-field">
+              <label>Home Price ($)</label>
+              <input type="number" id="calc-price" value="450000" oninput="calcMortgage()">
+            </div>
+            <div class="calc-field">
+              <label>Down Payment ($)</label>
+              <input type="number" id="calc-down" value="90000" oninput="calcMortgage()">
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label>Interest Rate (%)</label>
+              <input type="number" id="calc-rate" value="6.75" step="0.25" oninput="calcMortgage()">
+            </div>
+            <div class="calc-field">
+              <label>Loan Term (years)</label>
+              <input type="number" id="calc-term" value="30" oninput="calcMortgage()">
+            </div>
+          </div>
+          <div class="calc-result">
+            <div>
+              <p class="calc-result-label">Est. Monthly Payment</p>
+              <p class="calc-result-value" id="calc-output">$2,343</p>
+            </div>
+            <p class="calc-result-note">Principal &amp; interest only. Taxes, insurance, and HOA fees not included.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <p class="section-eyebrow">Financing Options</p>
+        <h2 class="section-title" style="margin-bottom:24px;">Paths to<br><em>Ownership</em></h2>
+        <p style="font-size:15px;font-weight:300;line-height:1.85;color:var(--mid);margin-bottom:32px;">Castle's works with a network of trusted local lenders who specialize in new construction financing. Tammy will connect you with the right partner for your situation.</p>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div class="fin-card"><p class="fin-card-title">Construction-to-Permanent Loans</p><p class="fin-card-desc">Finance the build and then automatically convert to a permanent mortgage at completion—one closing, one set of fees.</p></div>
+          <div class="fin-card"><p class="fin-card-title">Conventional Construction Loans</p><p class="fin-card-desc">Ideal for buyers with strong credit who want competitive rates during the construction phase.</p></div>
+          <div class="fin-card"><p class="fin-card-title">FHA &amp; VA Construction Loans</p><p class="fin-card-desc">Government-backed options that open the door for qualifying first-time buyers and veterans to build custom.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <div class="cta-image" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80');"></div>
+    <div class="cta-content">
+      <p class="section-eyebrow" style="color:var(--crimson-light);">Talk to Tammy</p>
+      <h2 class="section-title light" style="margin-bottom:16px;">Financing Made <em>Simple</em></h2>
+      <p class="cta-body">Reach out to Tammy directly to discuss your financing options. There's no pressure—just straightforward answers to your questions.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-primary">Contact Tammy</a>
+        <a href="mailto:tammy@castlescustomhomes.com" class="btn-outline-light">Send an Email</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <p class="footer-brand">Castle<span>'</span>s Custom Homes</p>
+        <p class="footer-tagline">Quality builders serving Twin Falls and the Magic Valley, Idaho. Family-owned, locally rooted, community proud.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/castlescustomhomes" class="footer-social" target="_blank">IG</a>
+          <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="footer-social" target="_blank">FB</a>
+          <a href="https://twitter.com/castlescustom" class="footer-social" target="_blank">TW</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Services</p>
+        <ul class="footer-links">
+          <li><a href="residential.html">Custom Residential</a></li>
+          <li><a href="your-lot.html">Build on Your Lot</a></li>
+          <li><a href="commercial.html">Commercial</a></li>
+          <li><a href="remodel.html">Remodels</a></li>
+          <li><a href="for-sale.html">For Sale</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Company</p>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html">Meet the Castles</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="financing.html">Financing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Quick Links</p>
+        <ul class="footer-links">
+          <li><a href="financing.html">Mortgage Calculator</a></li>
+          <li><a href="contact.html">Get a Quote</a></li>
+          <li><a href="http://www.castlescornercorp.com" target="_blank">Castle's Corner Stores</a></li>
+          <li><a href="tel:2083091547">(208) 309-1547</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 Castle Corner Corp. All rights reserved.</p>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script src="../js/reveal.js"></script>
+  <script src="../js/calculator.js"></script>
+</body>
+</html>

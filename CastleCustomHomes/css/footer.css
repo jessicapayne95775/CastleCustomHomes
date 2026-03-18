@@ -1,0 +1,50 @@
+/* ============================================================
+   footer.css  —  Site footer
+   Castle's Custom Homes
+   ============================================================ */
+
+footer {
+  background: #131210;
+  padding: clamp(44px,7vw,84px) var(--gutter) clamp(24px,3.5vw,44px);
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: clamp(24px,3.5vw,52px);
+  padding-bottom: clamp(36px,5vw,60px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  max-width: var(--max-w); margin: 0 auto;
+}
+.footer-brand { font-family: var(--font-serif); font-size: clamp(20px,2.5vw,30px); font-weight: 300; color: var(--white); margin-bottom: 12px; }
+.footer-brand span { color: var(--crimson-light); }
+.footer-tagline { font-size: clamp(12px,1.1vw,13px); font-weight: 300; line-height: 1.7; color: var(--warm-gray); margin-bottom: 22px; max-width: 280px; }
+.footer-socials { display: flex; gap: 10px; flex-wrap: wrap; }
+.footer-social {
+  width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.15);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--warm-gray); text-decoration: none; font-size: 11px;
+  transition: border-color .2s, color .2s; flex-shrink: 0;
+}
+.footer-social:hover { border-color: var(--crimson-light); color: var(--crimson-light); }
+.footer-col-title { font-size: 11px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 16px; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 9px; }
+.footer-links a { font-size: clamp(12px,1.1vw,13px); font-weight: 300; color: var(--warm-gray); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: clamp(18px,2.5vw,32px); flex-wrap: wrap; gap: 10px;
+  max-width: var(--max-w); margin: 0 auto;
+}
+.footer-copyright { font-size: 11px; color: rgba(255,255,255,.3); }
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a { font-size: 11px; color: rgba(255,255,255,.3); text-decoration: none; transition: color .2s; }
+.footer-legal a:hover { color: var(--warm-gray); }
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1024px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px)  { .footer-top { grid-template-columns: 1fr 1fr; gap: 24px; } }
+@media (max-width: 360px)  {
+  .footer-top    { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-legal  { justify-content: center; }
+}

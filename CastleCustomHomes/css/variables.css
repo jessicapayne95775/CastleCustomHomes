@@ -1,0 +1,49 @@
+/* ============================================================
+   variables.css  —  Tokens + reset
+   Castle's Custom Homes
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colors */
+  --cream:         #F5F1EA;
+  --stone:         #E8E2D8;
+  --warm-gray:     #9C9488;
+  --dark:          #1C1A17;
+  --mid:           #3D3A34;
+  --gold:          #B8975A;
+  --gold-light:    #D4B47A;
+  --crimson:       #A8213A;
+  --crimson-light: #C4324E;
+  --crimson-muted: #7A1829;
+  --white:         #FDFCF9;
+
+  /* Fonts */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Jost', sans-serif;
+
+  /*
+   * Fluid horizontal padding
+   * 320px → 20px gutter   1600px+ → 100px gutter
+   */
+  --gutter: clamp(20px, 6.25vw, 100px);
+
+  /* Fluid vertical section padding: 56px → 120px */
+  --section-v: clamp(56px, 9vw, 120px);
+
+  /* Cap content width on very wide screens */
+  --max-w: 1500px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--white);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a   { color: inherit; }
