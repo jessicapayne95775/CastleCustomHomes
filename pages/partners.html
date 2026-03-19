@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Partners | Castle's Custom Homes</title>
+  <meta name="description" content="Castle's Custom Homes works with a trusted network of local tradespeople, lenders, title companies, and suppliers across the Magic Valley.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <style>
+    /* ── Partners page ── */
+    .partners-intro {
+      max-width: 760px;
+      margin: 0 auto clamp(56px,8vw,96px);
+      text-align: center;
+    }
+    .partners-intro-body {
+      font-size: clamp(15px,1.5vw,17px);
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--mid);
+      margin-top: 20px;
+    }
+
+    /* ── Partner category section ── */
+    .partner-category {
+      margin-bottom: clamp(48px,7vw,80px);
+      max-width: var(--max-w);
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .partner-category-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: clamp(28px,4vw,40px);
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--stone);
+    }
+    .partner-category-icon {
+      width: clamp(44px,5vw,56px);
+      height: clamp(44px,5vw,56px);
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .partner-category-icon svg { color: var(--gold-light); }
+    .partner-category-title {
+      font-family: var(--font-serif);
+      font-size: clamp(24px,2.8vw,36px);
+      font-weight: 300;
+      color: var(--dark);
+      line-height: 1.1;
+    }
+    .partner-category-title em { font-style: italic; color: var(--crimson); }
+    .partner-category-desc {
+      font-size: clamp(13px,1.3vw,15px);
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--warm-gray);
+      max-width: 580px;
+      margin-top: 4px;
+    }
+
+    /* ── Partner cards grid ── */
+    .partner-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(14px,2vw,22px);
+    }
+    .partner-card {
+      background: var(--white);
+      border: 1px solid var(--stone);
+      padding: clamp(24px,3vw,36px) clamp(20px,2.5vw,28px);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .partner-card:hover {
+      box-shadow: 0 6px 28px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+    .partner-card-name {
+      font-family: var(--font-serif);
+      font-size: clamp(18px,2vw,22px);
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    .partner-card-type {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 12px;
+    }
+    .partner-card-desc {
+      font-size: clamp(12px,1.2vw,13px);
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--warm-gray);
+    }
+    .partner-card-note {
+      font-size: 11px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--stone);
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--stone);
+    }
+
+    /* ── Partner CTA ── */
+    .partner-cta {
+      background: var(--cream);
+      padding: clamp(56px,8vw,96px) var(--gutter);
+      text-align: center;
+    }
+    .partner-cta-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .partner-cta h2 { margin-bottom: 16px; }
+    .partner-cta p {
+      font-size: clamp(14px,1.4vw,16px);
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--mid);
+      margin-bottom: 36px;
+    }
+
+    @media (max-width: 1024px) { .partner-cards { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px)  { .partner-cards { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body data-nav-style="solid">
+
+  <nav class="site-nav" id="main-nav">
+    <a href="../index.html" class="nav-logo">Castle<span class="apostrophe">'</span>s Custom Homes</a>
+    <div class="nav-right">
+      <a href="tel:2083091547" class="nav-phone">(208) 309-1547</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay" role="dialog" aria-label="Navigation menu">
+    <div class="overlay-accent"></div>
+    <div class="nav-overlay-inner">
+      <ul class="overlay-menu">
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">Build With Us</a>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="residential.html" onclick="closeNav()">Residential</a></li>
+            <li><a href="your-lot.html"    onclick="closeNav()">Build on Your Lot</a></li>
+            <li><a href="remodel.html"     onclick="closeNav()">Remodels</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a href="gallery.html" class="overlay-link" onclick="closeNav()">Gallery</a>
+          </div>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">For Sale</a>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="for-sale.html" onclick="closeNav()">Available Homes</a></li>
+            <li><a href="lots.html"     onclick="closeNav()">Lots</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">About</a>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="about.html"      onclick="closeNav()">Meet the Team</a></li>
+            <li><a href="our-story.html"  onclick="closeNav()">Our Story</a></li>
+            <li><a href="community.html"  onclick="closeNav()">Community</a></li>
+            <li><a href="partners.html"   onclick="closeNav()">Our Partners</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">Financing</a>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="financing.html" onclick="closeNav()">Mortgage Calculator</a></li>
+            <li><a href="financing.html" onclick="closeNav()">Financing Options</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a href="contact.html" class="overlay-link" onclick="closeNav()">Contact</a>
+          </div>
+        </li>
+      </ul>
+      <div class="overlay-footer">
+        <div>
+          <p class="overlay-contact-label">Design & Estimates</p>
+          <p class="overlay-contact-val"><a href="mailto:kyle@castlescustomhomes.com">Kyle@CastlesCustomHomes.com</a></p>
+        </div>
+        <div>
+          <p class="overlay-contact-label">Follow Us</p>
+          <div class="overlay-socials">
+            <a href="https://instagram.com/castlescustomhomes" class="overlay-social" target="_blank">IG</a>
+            <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="overlay-social" target="_blank">FB</a>
+            <a href="https://twitter.com/castlescustom" class="overlay-social" target="_blank">TW</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Hero ── -->
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1600&q=80')"></div>
+    <div class="page-hero-content">
+      <p class="page-hero-eyebrow">About Us</p>
+      <h1>Our<br><em>Partners</em></h1>
+      <p>A Castle's home is built by more than our team alone. We work with a trusted network of local tradespeople, lenders, and professionals who share our standard.</p>
+    </div>
+  </div>
+
+  <!-- ── Intro ── -->
+  <div class="content-section">
+    <div class="partners-intro reveal">
+      <p class="section-eyebrow center">Who We Work With</p>
+      <h2 class="section-title">The Network Behind<br>Every <em>Castle's Home</em></h2>
+      <p class="partners-intro-body">Every home we build is the result of a coordinated team of professionals who've each earned their place in our process. We don't work with just anyone — our partners are vetted, local, and held to the same standard we hold ourselves to.</p>
+    </div>
+
+    <!-- ── Tradespeople ── -->
+    <div class="partner-category reveal">
+      <div class="partner-category-header">
+        <div class="partner-category-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="partner-category-title">Trade <em>Partners</em></h2>
+          <p class="partner-category-desc">The skilled craftspeople who bring your home to life — each one locally based and carefully selected for quality and reliability.</p>
+        </div>
+      </div>
+      <div class="partner-cards">
+        <div class="partner-card">
+          <p class="partner-card-name">Placeholder Framing Co.</p>
+          <p class="partner-card-type">Framing & Structural</p>
+          <p class="partner-card-desc">Our primary framing partner on residential builds across the Magic Valley. Known for precision and speed without sacrificing quality.</p>
+          <p class="partner-card-note">Replace with your actual framing partner</p>
+        </div>
+        <div class="partner-card">
+          <p class="partner-card-name">Placeholder Electrical</p>
+          <p class="partner-card-type">Electrical</p>
+          <p class="partner-card-desc">Licensed electricians handling everything from rough-in wiring to panel installation and final trim on every Castle's project.</p>
+          <p class="partner-card-note">Replace with your actual electrical partner</p>
+        </div>
+        <div class="partner-card">
+          <p class="partner-card-name">Placeholder Plumbing</p>
+          <p class="partner-card-type">Plumbing</p>
+          <p class="partner-card-desc">Trusted plumbing partner for new construction and remodels throughout Twin Falls and the surrounding region.</p>
+          <p class="partner-card-note">Replace with your actual plumbing partner</p>
+        </div>
+        <div class="partner-card">
+          <p class="partner-card-name">Placeholder HVAC</p>
+          <p class="partner-card-type">Heating, Ventilation & Air</p>
+          <p class="partner-card-desc">Handles mechanical design and installation on all Castle's builds — balancing energy efficiency with comfort for Idaho's climate.</p>
+          <p class="partner-card-note">Replace with your actual HVAC partner</p>
+        </div>
+        <div class="partner-card">
+          <p class="partner-card-name">Placeholder Concrete</p>
+          <p class="partner-card-type">Concrete & Foundations</p>
+          <p class="partner-card-desc">Foundation and flatwork partner delivering solid, code-compliant work across every terrain and soil condition we encounter.</p>
+          <p class="partner-card-note">Replace with your actual concrete partner</p>
+        </div>
+        <div class="partner-card">
+          <p class="partner-card-name">Placeholder Cabinetry</p>
+          <p class="partner-card-type">Cabinets & Millwork</p>
+          <p class="partner-card-desc">Custom and semi-custom cabinetry, trim work, and built-ins installed with the care and precision that Castle's clients expect.</p>
+          <p class="partner-card-note">Replace with your actual cabinetry partner</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Lending ── -->
+    <div class="partner-category reveal">
+      <div class="partner-category-header">
+        <div class="partner-category-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="partner-category-title">Lending <em>Partners</em></h2>
+          <p class="partner-category-desc">Local lenders who understand construction financing and work alongside Tammy to find the right solution for each client.</p>
+        </div>
+      </div>
+      <div class="partner-cards">
+        <div class="partner-card">
+          <p class="partner-card-name">Placeholder Bank</p>
+          <p class="partner-card-type">Construction Loans</p>
+          <p class="partner-card-desc">Our primary lending partner for construction-to-permanent loans. Their local team understands the Magic Valley market and works efficiently with our timeline.</p>
+          <p class="partner-card-note">Replace with your actual lending partner</p>
+        </div>
+        <div class="partner-card">
+          <p class="partner-card-name">Placeholder Credit Union</p>
+          <p class="partner-card-type">Residential Mortgages</p>
+          <p class="partner-card-desc">A trusted local credit union offering competitive rates on conventional and FHA construction loans for qualifying buyers.</p>
+          <p class="partner-card-note">Replace with your actual lending partner</p>
+        </div>
+        <div class="partner-card">
+          <p class="partner-card-name">Placeholder Mortgage Co.</p>
+          <p class="partner-card-type">VA & Specialty Loans</p>
+          <p class="partner-card-desc">Specialized in VA and first-time buyer programs, helping clients access financing options they may not find at a traditional bank.</p>
+          <p class="partner-card-note">Replace with your actual mortgage partner</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Title ── -->
+    <div class="partner-category reveal">
+      <div class="partner-category-header">
+        <div class="partner-category-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="partner-category-title">Title <em>Companies</em></h2>
+          <p class="partner-category-desc">Experienced local title professionals who ensure a clean, confident close on every Castle's transaction.</p>
+        </div>
+      </div>
+      <div class="partner-cards">
+        <div class="partner-card">
+          <p class="partner-card-name">Placeholder Title Co.</p>
+          <p class="partner-card-type">Title & Escrow</p>
+          <p class="partner-card-desc">Our primary title partner for new construction closings across the Magic Valley. Efficient, thorough, and familiar with the nuances of builder transactions.</p>
+          <p class="partner-card-note">Replace with your actual title partner</p>
+        </div>
+        <div class="partner-card">
+          <p class="partner-card-name">Placeholder Escrow</p>
+          <p class="partner-card-type">Escrow Services</p>
+          <p class="partner-card-desc">Handles escrow on lot purchases and build-to-suit transactions, ensuring funds and documentation are properly managed from contract to close.</p>
+          <p class="partner-card-note">Replace with your actual escrow partner</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Suppliers ── -->
+    <div class="partner-category reveal">
+      <div class="partner-category-header">
+        <div class="partner-category-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="partner-category-title">Material <em>Suppliers</em></h2>
+          <p class="partner-category-desc">The local yards, showrooms, and suppliers who provide the materials that make a Castle's home look and perform the way it should.</p>
+        </div>
+      </div>
+      <div class="partner-cards">
+        <div class="partner-card">
+          <p class="partner-card-name">Placeholder Lumber Yard</p>
+          <p class="partner-card-type">Lumber & Building Materials</p>
+          <p class="partner-card-desc">Our primary lumber and structural materials supplier — locally stocked, reliably delivered, and competitively priced for our clients' benefit.</p>
+          <p class="partner-card-note">Replace with your actual supplier</p>
+        </div>
+        <div class="partner-card">
+          <p class="partner-card-name">Placeholder Flooring</p>
+          <p class="partner-card-type">Flooring & Hard Surfaces</p>
+          <p class="partner-card-desc">Wide selection of hardwood, tile, LVP, and carpet, with a showroom where clients can view and select their finishes alongside Rebecca Binns.</p>
+          <p class="partner-card-note">Replace with your actual flooring partner</p>
+        </div>
+        <div class="partner-card">
+          <p class="partner-card-name">Placeholder Appliances</p>
+          <p class="partner-card-type">Appliances & Fixtures</p>
+          <p class="partner-card-desc">Preferred appliance and fixture supplier offering access to top brands at trade pricing — passed directly to our clients wherever possible.</p>
+          <p class="partner-card-note">Replace with your actual supplier</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.content-section -->
+
+  <!-- ── Become a partner CTA ── -->
+  <div class="partner-cta">
+    <div class="partner-cta-inner reveal">
+      <p class="section-eyebrow center">Work With Us</p>
+      <h2 class="section-title">Interested in<br><em>Partnering?</em></h2>
+      <p>If you're a local tradesperson, lender, supplier, or service provider who takes pride in quality work, we'd like to hear from you. Castle's is always looking to build relationships with people who share our standards.</p>
+      <a href="contact.html" class="btn-primary">Reach Out to Kyle</a>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <p class="footer-brand">Castle<span>'</span>s Custom Homes</p>
+        <p class="footer-tagline">Quality builders serving Twin Falls and the Magic Valley, Idaho. Family-owned, locally rooted, community proud.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/castlescustomhomes" class="footer-social" target="_blank">IG</a>
+          <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="footer-social" target="_blank">FB</a>
+          <a href="https://twitter.com/castlescustom" class="footer-social" target="_blank">TW</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Services</p>
+        <ul class="footer-links">
+          <li><a href="residential.html">Custom Residential</a></li>
+          <li><a href="your-lot.html">Build on Your Lot</a></li>
+          <li><a href="remodel.html">Remodels</a></li>
+          <li><a href="for-sale.html">For Sale</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Company</p>
+        <ul class="footer-links">
+          <li><a href="about.html">Meet the Team</a></li>
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="community.html">Community</a></li>
+          <li><a href="partners.html">Our Partners</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Quick Links</p>
+        <ul class="footer-links">
+          <li><a href="financing.html">Mortgage Calculator</a></li>
+          <li><a href="contact.html">Get a Quote</a></li>
+          <li><a href="http://www.castlescornercorp.com" target="_blank">Castle's Corner Stores</a></li>
+          <li><a href="tel:2083091547">(208) 309-1547</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 Castle Corner Corp. All rights reserved.</p>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script src="../js/reveal.js"></script>
+</body>
+</html>

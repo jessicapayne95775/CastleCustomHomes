@@ -28,13 +28,12 @@
       <ul class="overlay-menu">
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">Build With Us</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">Build With Us</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
             <li><a href="residential.html" onclick="closeNav()">Residential</a></li>
             <li><a href="your-lot.html"    onclick="closeNav()">Build on Your Lot</a></li>
-            <li><a href="commercial.html"  onclick="closeNav()">Commercial</a></li>
             <li><a href="remodel.html"     onclick="closeNav()">Remodels</a></li>
           </ul>
         </li>
@@ -45,29 +44,29 @@
         </li>
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">For Sale</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">For Sale</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
             <li><a href="for-sale.html" onclick="closeNav()">Available Homes</a></li>
-            <li><a href="for-sale.html" onclick="closeNav()">Build to Suit</a></li>
+            <li><a href="lots.html" onclick="closeNav()">Lots</a></li>
           </ul>
         </li>
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">About</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">About</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
-            <li><a href="about.html" onclick="closeNav()">Meet the Castles</a></li>
-            <li><a href="about.html" onclick="closeNav()">Our Story</a></li>
-            <li><a href="about.html" onclick="closeNav()">Community</a></li>
-            <li><a href="about.html" onclick="closeNav()">Our Partners</a></li>
+            <li><a href="about.html" onclick="closeNav()">Meet the Team</a></li>
+            <li><a href="our-story.html" onclick="closeNav()">Our Story</a></li>
+            <li><a href="community.html" onclick="closeNav()">Community</a></li>
+            <li><a href="partners.html" onclick="closeNav()">Our Partners</a></li>
           </ul>
         </li>
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">Financing</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">Financing</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
@@ -101,33 +100,128 @@
   <div class="page-hero">
     <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80')"></div>
     <div class="page-hero-content">
-      <p class="page-hero-eyebrow">Our Story</p>
-      <h1>Meet the<br><em>Castle Family</em></h1>
+      <p class="page-hero-eyebrow">About Us</p>
+      <h1>Meet the<br><em>Team</em></h1>
       <p>Castle's Custom Homes is more than a builder—it's a family-owned business built on relationships, integrity, and a deep love for the Magic Valley.</p>
     </div>
   </div>
 
   <div class="content-section">
-    <div class="reveal" style="max-width:760px;margin:0 auto 72px;text-align:center;">
-      <p class="section-eyebrow center">Who We Are</p>
-      <h2 class="section-title" style="margin-bottom:24px;">A Builder You Can <em>Trust</em></h2>
-      <p style="font-size:16px;font-weight:300;line-height:1.85;color:var(--mid);">Since opening our doors, Castle's Custom Homes has been defined by one thing above all else: doing right by our clients. Kyle and Tammy Castle built this company with the conviction that homebuilding should be honest, personal, and rewarding—for the builder and the family moving in.</p>
+    <div class="reveal" style="max-width:760px;margin:0 auto clamp(40px,6vw,80px);text-align:center;">
+      <p class="section-eyebrow center">The People Behind Every Build</p>
+      <h2 class="section-title" style="margin-bottom:24px;">Our <em>Team</em></h2>
+      <p class="section-body">Castle's Custom Homes is built on the talent, dedication, and craft of a close-knit team that brings expertise to every role — from design and project management to sales, finance, and the finishing details that make a house a home.</p>
     </div>
-    <div class="team-grid">
-      <div class="team-card reveal">
-        <img class="team-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Kyle Castle">
-        <h3 class="team-name">Kyle Castle</h3>
-        <p class="team-role">Co-Founder, Design & Construction</p>
-        <p class="team-bio">Kyle oversees every build from the ground up—literally. With years of hands-on construction experience across the Magic Valley, he brings both technical precision and creative vision to every project. Kyle is your primary point of contact from design through completion.</p>
-        <p class="team-contact"><a href="mailto:kyle@castlescustomhomes.com">kyle@castlescustomhomes.com</a><br><a href="tel:2083091547">(208) 309-1547</a></p>
+    <div class="team-grid-full">
+
+      <div class="team-card-new reveal">
+        <div class="team-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Kyle Castle">
+        </div>
+        <div class="team-card-body">
+          <div class="team-card-header">
+            <div>
+              <h3 class="team-name-new">Kyle Castle</h3>
+              <p class="team-role-new">President <span class="role-divider">|</span> General Contractor</p>
+            </div>
+          </div>
+          <p class="team-bio-new">Kyle Castle is the President and General Contractor of Castle's Custom Homes and a second-generation builder with deep roots in the Wood River Valley. Raised in the construction industry, Kyle began working in the field during high school and gained early, hands-on experience through both family and professional building environments.</p>
+          <p class="team-contact-new"><a href="mailto:kyle@castlescustomhomes.com">kyle@castlescustomhomes.com</a> &nbsp;·&nbsp; <a href="tel:2083091547">(208) 309-1547</a></p>
+        </div>
       </div>
-      <div class="team-card reveal reveal-delay-1">
-        <img class="team-photo" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80" alt="Tammy Castle">
-        <h3 class="team-name">Tammy Castle</h3>
-        <p class="team-role">Co-Founder, Client Relations & Financing</p>
-        <p class="team-bio">Tammy is the heart of the client experience at Castle's. From your first consultation to financing guidance and everything in between, Tammy ensures that working with us is as smooth and stress-free as possible. Her warmth and business acumen make every client feel at home before the home is even built.</p>
-        <p class="team-contact"><a href="mailto:tammy@castlescustomhomes.com">tammy@castlescustomhomes.com</a><br><a href="tel:2083091549">(208) 309-1549</a></p>
+
+      <div class="team-card-new reveal reveal-delay-1">
+        <div class="team-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80" alt="Tammy Castle">
+        </div>
+        <div class="team-card-body">
+          <div class="team-card-header">
+            <div>
+              <h3 class="team-name-new">Tammy Castle</h3>
+              <p class="team-role-new">Co-Founder <span class="role-divider">|</span> Operations &amp; Design Oversight</p>
+            </div>
+          </div>
+          <p class="team-bio-new">Tammy Castle is the Co-Founder of Castle's Custom Homes and oversees operations, systems, and design direction for the company. She joined the business in 2003, bringing a strong background in business management, financial organization, and client coordination.</p>
+          <p class="team-contact-new"><a href="mailto:tammy@castlescustomhomes.com">tammy@castlescustomhomes.com</a> &nbsp;·&nbsp; <a href="tel:2083091549">(208) 309-1549</a></p>
+        </div>
       </div>
+
+      <div class="team-card-new reveal">
+        <div class="team-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80" alt="Rebecca Binns">
+        </div>
+        <div class="team-card-body">
+          <div class="team-card-header">
+            <div>
+              <h3 class="team-name-new">Rebecca Binns</h3>
+              <p class="team-role-new">Lead Designer</p>
+            </div>
+          </div>
+          <p class="team-bio-new">Rebecca Binns serves as Lead Designer at Castle's Custom Homes and plays a key role in shaping the look, feel, and cohesion of each project. With a background rooted in both creative design and construction, Rebecca helps translate client vision into thoughtful, buildable design solutions.</p>
+        </div>
+      </div>
+
+      <div class="team-card-new reveal reveal-delay-1">
+        <div class="team-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80" alt="Chayton Castle">
+        </div>
+        <div class="team-card-body">
+          <div class="team-card-header">
+            <div>
+              <h3 class="team-name-new">Chayton Castle</h3>
+              <p class="team-role-new">Lead Project Manager</p>
+            </div>
+          </div>
+          <p class="team-bio-new">Chayton Castle serves as Lead Project Manager at Castle's Custom Homes and represents the third generation of builders in the Castle family. He began working in construction at a young age, gaining hands-on experience in the field throughout high school.</p>
+        </div>
+      </div>
+
+      <div class="team-card-new reveal">
+        <div class="team-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80" alt="Kylie Spence">
+        </div>
+        <div class="team-card-body">
+          <div class="team-card-header">
+            <div>
+              <h3 class="team-name-new">Kylie Spence</h3>
+              <p class="team-role-new">Sales &amp; Marketing <span class="role-divider">|</span> Licensed Realtor</p>
+            </div>
+          </div>
+          <p class="team-bio-new">Kylie Spence leads sales and marketing for Castle's Custom Homes and serves as the company's licensed Realtor, representing listings throughout both the Wood River and Magic Valleys. She guides buyers through the purchasing process from first showing to closing with clarity and care.</p>
+        </div>
+      </div>
+
+      <div class="team-card-new reveal reveal-delay-1">
+        <div class="team-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80" alt="Tyler Spence">
+        </div>
+        <div class="team-card-body">
+          <div class="team-card-header">
+            <div>
+              <h3 class="team-name-new">Tyler Spence</h3>
+              <p class="team-role-new">Construction Cleans &amp; Staging Support</p>
+            </div>
+          </div>
+          <p class="team-bio-new">Tyler Spence supports the Castle's team through construction cleans and staging, ensuring every home is presented at its best before handoff. His work is a key part of delivering the polished, move-in-ready standard that Castle's clients expect.</p>
+          <p class="team-bio-note">Bio coming soon.</p>
+        </div>
+      </div>
+
+      <div class="team-card-new team-card-new--centered reveal">
+        <div class="team-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80" alt="Stephanie Martin">
+        </div>
+        <div class="team-card-body">
+          <div class="team-card-header">
+            <div>
+              <h3 class="team-name-new">Stephanie Martin</h3>
+              <p class="team-role-new">Bookkeeper</p>
+            </div>
+          </div>
+          <p class="team-bio-new">Stephanie Martin serves as Bookkeeper for Castle's Custom Homes and is responsible for maintaining accurate, organized financial records across projects. She manages job cost tracking, invoices, billing, and financial reporting, ensuring information is reliable and up to date.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -148,7 +242,7 @@
     <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto;">
       <p class="section-eyebrow center">Community</p>
       <h2 class="section-title" style="margin-bottom:24px;">Rooted in the <em>Magic Valley</em></h2>
-      <p style="font-size:15px;font-weight:300;line-height:1.85;color:var(--mid);margin-bottom:36px;">Beyond building homes, Castle's Corner Corp supports local events, youth programs, and the broader Twin Falls business community. When you build with Castle's, you're investing in a company that invests right back in your neighborhood.</p>
+      <p class="section-body" style="margin-bottom:36px;">Beyond building homes, Castle's Corner Corp supports local events, youth programs, and the broader Twin Falls business community. When you build with Castle's, you're investing in a company that invests right back in your neighborhood.</p>
       <a href="http://www.castlescornercorp.com" class="btn-outline" target="_blank">Visit Castle's Corner Stores</a>
     </div>
   </div>
@@ -169,7 +263,6 @@
         <ul class="footer-links">
           <li><a href="residential.html">Custom Residential</a></li>
           <li><a href="your-lot.html">Build on Your Lot</a></li>
-          <li><a href="commercial.html">Commercial</a></li>
           <li><a href="remodel.html">Remodels</a></li>
           <li><a href="for-sale.html">For Sale</a></li>
         </ul>
@@ -178,7 +271,7 @@
         <p class="footer-col-title">Company</p>
         <ul class="footer-links">
           <li><a href="about.html">About Us</a></li>
-          <li><a href="about.html">Meet the Castles</a></li>
+          <li><a href="about.html">Meet the Team</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="financing.html">Financing</a></li>
           <li><a href="contact.html">Contact</a></li>

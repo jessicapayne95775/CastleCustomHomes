@@ -12,13 +12,14 @@
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/footer.css">
   <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/testimonials.css">
 </head>
 <body data-nav-style="hero">
 
   <!-- ── Navigation ── -->
   <nav class="site-nav" id="main-nav">
     <a href="index.html" class="nav-logo">
-      <img src="assets/images/CastleLogo.png" alt="Castle's Custom Homes Logo">
+      Castle<span class="apostrophe">'</span>s Custom Homes
     </a>
     <div class="nav-right">
       <a href="tel:2083091547" class="nav-phone">(208) 309-1547</a>
@@ -34,13 +35,12 @@
       <ul class="overlay-menu">
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">Build With Us</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">Build With Us</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
             <li><a href="pages/residential.html" onclick="closeNav()">Residential</a></li>
             <li><a href="pages/your-lot.html"    onclick="closeNav()">Build on Your Lot</a></li>
-            <li><a href="pages/commercial.html"  onclick="closeNav()">Commercial</a></li>
             <li><a href="pages/remodel.html"     onclick="closeNav()">Remodels</a></li>
           </ul>
         </li>
@@ -51,29 +51,29 @@
         </li>
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">For Sale</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">For Sale</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
             <li><a href="pages/for-sale.html" onclick="closeNav()">Available Homes</a></li>
-            <li><a href="pages/for-sale.html" onclick="closeNav()">Build to Suit</a></li>
+            <li><a href="pages/lots.html" onclick="closeNav()">Lots</a></li>
           </ul>
         </li>
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">About</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">About</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
-            <li><a href="pages/about.html" onclick="closeNav()">Meet the Castles</a></li>
-            <li><a href="pages/about.html" onclick="closeNav()">Our Story</a></li>
-            <li><a href="pages/about.html" onclick="closeNav()">Community</a></li>
-            <li><a href="pages/about.html" onclick="closeNav()">Our Partners</a></li>
+            <li><a href="pages/about.html" onclick="closeNav()">Meet the Team</a></li>
+            <li><a href="pages/our-story.html" onclick="closeNav()">Our Story</a></li>
+            <li><a href="pages/community.html" onclick="closeNav()">Community</a></li>
+            <li><a href="pages/partners.html" onclick="closeNav()">Our Partners</a></li>
           </ul>
         </li>
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">Financing</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">Financing</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
@@ -138,7 +138,7 @@
     </div>
     <div class="services-grid">
       <a href="pages/residential.html" class="service-card reveal">
-        <div class="service-card-bg" style="background-image:url('assets/images/gallaryExterior.avif')"></div>
+        <div class="service-card-bg" style="background-image:url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80')"></div>
         <div class="service-card-overlay"></div>
         <div class="service-card-content">
           <p class="service-num">01</p>
@@ -148,7 +148,7 @@
         </div>
       </a>
       <a href="pages/your-lot.html" class="service-card reveal reveal-delay-1">
-        <div class="service-card-bg" style="background-image:url('assets/images/Lot.png')"></div>
+        <div class="service-card-bg" style="background-image:url('https://images.unsplash.com/photo-1504615755583-2916b52192a3?w=800&q=80')"></div>
         <div class="service-card-overlay"></div>
         <div class="service-card-content">
           <p class="service-num">02</p>
@@ -158,7 +158,7 @@
         </div>
       </a>
       <a href="pages/remodel.html" class="service-card reveal reveal-delay-2">
-        <div class="service-card-bg" style="background-image:url('assets/images/remodel.avif')"></div>
+        <div class="service-card-bg" style="background-image:url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&q=80')"></div>
         <div class="service-card-overlay"></div>
         <div class="service-card-content">
           <p class="service-num">03</p>
@@ -174,14 +174,14 @@
   <div class="about-split">
     <div class="about-portraits">
       <div class="about-portrait">
-        <img src="assets/images/kyleCastle.png" alt="Kyle Castle, Owner">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Kyle Castle, Owner">
         <div class="about-portrait-caption">
           <p class="about-portrait-name">Kyle Castle</p>
           <p class="about-portrait-title">Owner</p>
         </div>
       </div>
       <div class="about-portrait">
-        <img src="assets/images/tammyCastle.png" alt="Tammy Castle, Vice President">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80" alt="Tammy Castle, Vice President">
         <div class="about-portrait-caption">
           <p class="about-portrait-name">Tammy Castle</p>
           <p class="about-portrait-title">Vice President</p>
@@ -224,28 +224,70 @@
       <a href="pages/gallery.html" class="btn-ghost">View Full Gallery</a>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="assets/images/exterior3.png" alt="Custom home exterior"></div>
-      <div class="gallery-item"><img src="assets/images/CustomKitchen.avif" alt="Kitchen interior"></div>
-      <div class="gallery-item"><img src="assets/images/fireplace.png" alt="Living room"></div>
-      <div class="gallery-item"><img src="assets/images/exterior4.png" alt="Luxury home front"></div>
-      <div class="gallery-item"><img src="assets/images/outside.png" alt="Home exterior"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=900&q=80" alt="Custom home exterior"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80" alt="Kitchen interior"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80" alt="Living room"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Luxury home front"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Home exterior"></div>
     </div>
   </section>
 
   <!-- ── Testimonials ── -->
-  <section class="testimonials">
+  <section class="testimonials" id="testimonials-section">
     <p class="section-eyebrow center">What Clients Say</p>
     <h2 class="section-title" style="margin-bottom:0;">Built on <em>Trust</em></h2>
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal"><p class="testimonial-text">Working with Kyle and Tammy was an absolute pleasure. They were transparent throughout the entire build and the quality of our home exceeded every expectation.</p><div class="testimonial-divider"></div><p class="testimonial-author">The Henderson Family</p><p class="testimonial-location">Twin Falls, Idaho</p></div>
-      <div class="testimonial-card reveal reveal-delay-1"><p class="testimonial-text">Castle's built our commercial space on time and on budget. As fellow small business owners, Kyle and Tammy truly understood what we needed and delivered perfectly.</p><div class="testimonial-divider"></div><p class="testimonial-author">James & Carla Merritt</p><p class="testimonial-location">Magic Valley, Idaho</p></div>
-      <div class="testimonial-card reveal reveal-delay-2"><p class="testimonial-text">From our first meeting to move-in day, we felt like we were building with family. The process was seamless and our home is everything we dreamed it would be.</p><div class="testimonial-divider"></div><p class="testimonial-author">The Ramirez Family</p><p class="testimonial-location">Twin Falls, Idaho</p></div>
+
+    <div class="testimonials-carousel">
+      <!-- All cards live here as a flat list.
+           JS reads these and re-paginates dynamically based on screen size.
+           To add more reviews: copy a .testimonial-card block and add it here. -->
+      <div id="t-card-pool" style="display:none;">
+        <div class="testimonial-card"><span class="t-rating">5/5</span><p class="testimonial-text">Working with Kyle and Tammy was an absolute pleasure. They were transparent throughout the entire build and the quality of our home exceeded every expectation.</p><div class="testimonial-divider"></div><p class="testimonial-author">The Henderson Family</p><p class="testimonial-location">Twin Falls, Idaho</p></div>
+        <div class="testimonial-card"><span class="t-rating">5/5</span><p class="testimonial-text">Castle's built our commercial space on time and on budget. As fellow small business owners, Kyle and Tammy truly understood what we needed and delivered perfectly.</p><div class="testimonial-divider"></div><p class="testimonial-author">James &amp; Carla Merritt</p><p class="testimonial-location">Magic Valley, Idaho</p></div>
+        <div class="testimonial-card"><span class="t-rating">4.8/5</span><p class="testimonial-text">From our first meeting to move-in day, we felt like we were building with family. The process was seamless and our home is everything we dreamed it would be.</p><div class="testimonial-divider"></div><p class="testimonial-author">The Ramirez Family</p><p class="testimonial-location">Twin Falls, Idaho</p></div>
+        <div class="testimonial-card"><span class="t-rating">5/5</span><p class="testimonial-text">Kyle walked us through every decision with patience and expertise. We never felt rushed or pressured, and the finished home is beyond what we imagined possible.</p><div class="testimonial-divider"></div><p class="testimonial-author">The Calloway Family</p><p class="testimonial-location">Kimberly, Idaho</p></div>
+        <div class="testimonial-card"><span class="t-rating">5/5</span><p class="testimonial-text">We built on our own lot outside of Buhl and Castle's handled everything — permitting, site prep, the whole process. Kyle's communication was outstanding start to finish.</p><div class="testimonial-divider"></div><p class="testimonial-author">Steve &amp; Dana Whitfield</p><p class="testimonial-location">Buhl, Idaho</p></div>
+        <div class="testimonial-card"><span class="t-rating">4.9/5</span><p class="testimonial-text">Tammy made the financing side of our build so easy to understand. She connected us with the right lender and walked us through every option without any pressure.</p><div class="testimonial-divider"></div><p class="testimonial-author">The Okafor Family</p><p class="testimonial-location">Twin Falls, Idaho</p></div>
+        <div class="testimonial-card"><span class="t-rating">5/5</span><p class="testimonial-text">We did a full kitchen and master bath remodel with Castle's and couldn't be happier. The craftsmanship is exceptional and they finished ahead of schedule.</p><div class="testimonial-divider"></div><p class="testimonial-author">Pam &amp; Rick Sorenson</p><p class="testimonial-location">Twin Falls, Idaho</p></div>
+        <div class="testimonial-card"><span class="t-rating">4.7/5</span><p class="testimonial-text">As a first-time custom home buyer, I had a lot of questions. Kyle and Tammy answered every single one and made sure I felt confident in every choice we made together.</p><div class="testimonial-divider"></div><p class="testimonial-author">Lindsey Marchetti</p><p class="testimonial-location">Filer, Idaho</p></div>
+        <div class="testimonial-card"><span class="t-rating">5/5</span><p class="testimonial-text">Castle's built our dental office and the result is stunning. They understood our functional needs perfectly and delivered a space that impresses every patient who walks in.</p><div class="testimonial-divider"></div><p class="testimonial-author">Dr. Aaron &amp; Lisa Kimball</p><p class="testimonial-location">Magic Valley, Idaho</p></div>
+      </div>
+
+      <!-- JS builds .t-slides + .t-page wrappers dynamically into this -->
+      <div class="t-slides-outer">
+        <div class="t-slides" id="t-slides"></div>
+      </div>
+
+      <!-- Controls: prev arrow · dots · next arrow -->
+      <div class="t-controls">
+        <button class="t-arrow" id="t-prev" aria-label="Previous">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="18" y1="14" x2="6" y2="14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <polyline points="11,9 6,14 11,19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="t-dots" id="t-dots">
+          <button class="t-dot active" aria-label="Page 1"></button>
+          <button class="t-dot" aria-label="Page 2"></button>
+          <button class="t-dot" aria-label="Page 3"></button>
+        </div>
+        <button class="t-arrow" id="t-next" aria-label="Next">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="14" x2="22" y2="14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <polyline points="17,9 22,14 17,19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Progress line -->
+      <div class="t-progress-track"><div class="t-progress-bar" id="t-progress"></div></div>
+
     </div>
   </section>
 
   <!-- ── CTA Band ── -->
   <div class="cta-band">
-    <div class="cta-image" style="background-image:url('assets/images/Location.png');background-size:cover;background-position:center;"></div>
+    <div class="cta-image" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80');background-size:cover;background-position:center;"></div>
     <div class="cta-content">
       <p class="section-eyebrow" style="color:var(--crimson-light);">Ready to Build?</p>
       <h2 class="section-title light" style="margin-bottom:20px;">Let's Start Your <em>Story</em></h2>
@@ -278,7 +320,6 @@
         <ul class="footer-links">
           <li><a href="pages/residential.html">Custom Residential</a></li>
           <li><a href="pages/your-lot.html">Build on Your Lot</a></li>
-          <li><a href="pages/commercial.html">Commercial</a></li>
           <li><a href="pages/remodel.html">Remodels</a></li>
           <li><a href="pages/for-sale.html">For Sale</a></li>
         </ul>
@@ -287,7 +328,7 @@
         <p class="footer-col-title">Company</p>
         <ul class="footer-links">
           <li><a href="pages/about.html">About Us</a></li>
-          <li><a href="pages/about.html">Meet the Castles</a></li>
+          <li><a href="pages/about.html">Meet the Team</a></li>
           <li><a href="pages/gallery.html">Gallery</a></li>
           <li><a href="pages/financing.html">Financing</a></li>
           <li><a href="pages/contact.html">Contact</a></li>
@@ -311,5 +352,6 @@
 
   <script src="js/nav.js"></script>
   <script src="js/reveal.js"></script>
+  <script src="js/testimonials.js"></script>
 </body>
 </html>

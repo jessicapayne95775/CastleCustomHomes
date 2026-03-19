@@ -1,0 +1,155 @@
+/* ============================================================
+   testimonials.css  —  Paginated carousel
+   Castle's Custom Homes
+
+   NOTE: Responsive card count is handled entirely by JS
+   (testimonials.js reads viewport width and builds pages).
+   CSS here only handles layout, visual style, and transitions.
+   ============================================================ */
+
+.testimonials {
+  padding: var(--section-v) var(--gutter);
+  text-align: center;
+  background: var(--cream);
+  position: relative;
+}
+
+/* ── Carousel container ── */
+.testimonials-carousel {
+  margin-top: clamp(36px, 5vw, 64px);
+  max-width: var(--max-w);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Clip window ── */
+.t-slides-outer {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ── Sliding strip ── */
+.t-slides {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.77, 0, 0.18, 1);
+  will-change: transform;
+}
+
+/* ── Each page — JS sets grid-template-columns inline ── */
+.t-page {
+  flex: 0 0 100%;
+  width: 100%;
+  display: grid;
+  gap: clamp(14px, 2vw, 26px);
+  /* grid-template-columns is set dynamically by JS */
+}
+
+/* ── Individual review cards ── */
+.testimonial-card {
+  background: var(--white);
+  padding: clamp(24px, 3vw, 42px) clamp(18px, 2.5vw, 36px);
+  text-align: left;
+  position: relative;
+}
+.testimonial-card::before {
+  content: '"';
+  font-family: var(--font-serif);
+  font-size: clamp(52px, 6vw, 84px);
+  color: var(--crimson);
+  opacity: .2;
+  position: absolute;
+  top: 10px; left: 22px;
+  line-height: 1;
+}
+.testimonial-text {
+  font-family: var(--font-serif);
+  font-size: clamp(14px, 1.5vw, 17px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.75;
+  color: var(--mid);
+  padding-top: 34px;
+  margin-bottom: 22px;
+}
+.testimonial-divider { width: 32px; height: 1px; background: var(--crimson); margin-bottom: 10px; }
+.testimonial-author   { font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--dark); }
+.testimonial-location { font-size: 11px; color: var(--warm-gray); margin-top: 3px; }
+
+/* ── Controls row: ← dots → ── */
+.t-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3vw, 32px);
+  margin-top: clamp(28px, 4vw, 44px);
+}
+
+/* ── Sleek bare arrows ── */
+.t-arrow {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--warm-gray);
+  padding: 0;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+.t-arrow:hover { color: var(--crimson); }
+.t-arrow svg   { display: block; }
+
+/* ── Dots ── */
+.t-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.t-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--stone);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.25s, width 0.3s;
+}
+.t-dot.active {
+  background: var(--crimson);
+  width: 24px;
+}
+.t-dot:hover:not(.active) { background: var(--warm-gray); }
+
+/* ── Progress line ── */
+.t-progress-track {
+  max-width: 200px;
+  margin: clamp(14px, 2vw, 20px) auto 0;
+  height: 1px;
+  background: var(--stone);
+  overflow: hidden;
+}
+.t-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--crimson);
+}
+
+/* ── Rating badge ── */
+.t-rating {
+  position: absolute;
+  top: clamp(16px, 2vw, 24px);
+  right: clamp(16px, 2vw, 24px);
+  font-family: var(--font-serif);
+  font-size: clamp(13px, 1.4vw, 16px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--gold);
+  letter-spacing: 0.03em;
+  line-height: 1;
+}

@@ -28,13 +28,12 @@
       <ul class="overlay-menu">
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">Build With Us</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">Build With Us</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
             <li><a href="residential.html" onclick="closeNav()">Residential</a></li>
             <li><a href="your-lot.html"    onclick="closeNav()">Build on Your Lot</a></li>
-            <li><a href="commercial.html"  onclick="closeNav()">Commercial</a></li>
             <li><a href="remodel.html"     onclick="closeNav()">Remodels</a></li>
           </ul>
         </li>
@@ -45,29 +44,29 @@
         </li>
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">For Sale</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">For Sale</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
             <li><a href="for-sale.html" onclick="closeNav()">Available Homes</a></li>
-            <li><a href="for-sale.html" onclick="closeNav()">Build to Suit</a></li>
+            <li><a href="lots.html" onclick="closeNav()">Lots</a></li>
           </ul>
         </li>
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">About</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">About</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
-            <li><a href="about.html" onclick="closeNav()">Meet the Castles</a></li>
-            <li><a href="about.html" onclick="closeNav()">Our Story</a></li>
-            <li><a href="about.html" onclick="closeNav()">Community</a></li>
-            <li><a href="about.html" onclick="closeNav()">Our Partners</a></li>
+            <li><a href="about.html" onclick="closeNav()">Meet the Team</a></li>
+            <li><a href="our-story.html" onclick="closeNav()">Our Story</a></li>
+            <li><a href="community.html" onclick="closeNav()">Community</a></li>
+            <li><a href="partners.html" onclick="closeNav()">Our Partners</a></li>
           </ul>
         </li>
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">Financing</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">Financing</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
@@ -132,13 +131,26 @@
 
   <div class="content-section dark">
     <div class="reveal">
-      <p class="section-eyebrow" style="color:var(--crimson-light);">Why Castle's</p>
+      <p class="section-eyebrow" >Why Castle's</p>
       <h2 class="section-title light">Small Business <em>Owners</em><br>Building for Small Business Owners</h2>
     </div>
     <div class="cards-grid">
       <div class="card dark-card reveal"><div class="card-num">01</div><h3>We Get It</h3><p>Kyle and Tammy run Castle's Corner Corp as well. They know the pressure of commercial construction firsthand.</p></div>
       <div class="card dark-card reveal reveal-delay-1"><div class="card-num">02</div><h3>Honest Budgets</h3><p>No hidden costs, no bait-and-switch pricing. You'll know exactly what you're spending before a single nail is driven.</p></div>
       <div class="card dark-card reveal reveal-delay-2"><div class="card-num">03</div><h3>Local Relationships</h3><p>Our network of subcontractors and suppliers across the Magic Valley means competitive pricing without compromising quality.</p></div>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <div class="cta-image" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=80');background-size:cover;background-position:center;"></div>
+    <div class="cta-content">
+      <p class="section-eyebrow" style="color:var(--crimson-light);">Start a Conversation</p>
+      <h2 class="section-title light" style="margin-bottom:20px;">Let's Build Your <em>Business</em></h2>
+      <p class="cta-body">Ready to discuss a commercial project? Kyle will give you a straight, honest assessment of what's possible — no runaround, no inflated quotes.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-primary">Discuss Your Project</a>
+        <a href="tel:2083091547" class="btn-outline-light">Call (208) 309-1547</a>
+      </div>
     </div>
   </div>
 
@@ -158,7 +170,6 @@
         <ul class="footer-links">
           <li><a href="residential.html">Custom Residential</a></li>
           <li><a href="your-lot.html">Build on Your Lot</a></li>
-          <li><a href="commercial.html">Commercial</a></li>
           <li><a href="remodel.html">Remodels</a></li>
           <li><a href="for-sale.html">For Sale</a></li>
         </ul>
@@ -167,7 +178,7 @@
         <p class="footer-col-title">Company</p>
         <ul class="footer-links">
           <li><a href="about.html">About Us</a></li>
-          <li><a href="about.html">Meet the Castles</a></li>
+          <li><a href="about.html">Meet the Team</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="financing.html">Financing</a></li>
           <li><a href="contact.html">Contact</a></li>

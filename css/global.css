@@ -64,6 +64,20 @@
 .section-title.light { color: var(--white); }
 .section-title.light em { color: var(--gold-light); }
 
+/* Reusable body copy under section headings */
+.section-body {
+  font-size: clamp(14px, 1.4vw, 16px);
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--mid);
+}
+.section-body.centered {
+  text-align: center;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ── Page hero (interior pages) ───────────────────────────── */
 .page-hero {
   position: relative; background: var(--dark); overflow: hidden;
@@ -148,7 +162,8 @@
 }
 .card { background: var(--white); padding: clamp(24px,3vw,44px) clamp(18px,2.5vw,34px); border-bottom: 3px solid var(--crimson); }
 .card.dark-card { background: rgba(255,255,255,.04); border-bottom: 3px solid var(--crimson); }
-.card-num { font-family: var(--font-serif); font-size: clamp(32px,4vw,52px); font-weight: 300; font-style: italic; color: rgba(168,33,58,.2); line-height: 1; margin-bottom: 14px; }
+.card-num { font-family: var(--font-serif); font-size: clamp(32px,4vw,52px); font-weight: 300; font-style: italic; color: var(--crimson-light); line-height: 1; margin-bottom: 14px; }
+.card.dark-card .card-num { color: var(--gold-light); opacity: 0.5; }
 .card h3  { font-family: var(--font-serif); font-size: clamp(18px,2vw,24px); font-weight: 400; color: var(--dark); margin-bottom: 10px; }
 .card.dark-card h3 { color: var(--white); }
 .card p   { font-size: clamp(13px,1.2vw,14px); font-weight: 300; line-height: 1.75; color: var(--warm-gray); }
@@ -222,4 +237,13 @@
 @media (max-width: 360px) {
   .stats-bar    { grid-template-columns: 1fr 1fr; }
   .stat-number  { font-size: 26px; }
+}
+
+/* Bottom CTA note line (used on for-sale, lots pages) */
+.cta-note {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--warm-gray);
+  margin-bottom: 16px;
+  letter-spacing: 0.06em;
 }

@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Lots | Castle's Custom Homes</title>
+  <meta name="description" content="Browse available lots across Twin Falls, Kimberly, and surrounding Idaho communities.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <style>
+  /* ════════════════════════════════════════════════
+     LOTS PAGE
+  ════════════════════════════════════════════════ */
+
+  /* ── Layout: sidebar + cards ── */
+  .lots-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+    align-items: start;
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  /* ── Sidebar ── */
+  .lots-sidebar {
+    position: sticky;
+    top: clamp(60px,7vw,84px); /* accounts for fixed nav height */
+    background: var(--dark);
+    padding: 40px 32px 48px;
+    /* no min-height — prevents invisible blocking layer */
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .sidebar-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 6px;
+    line-height: 1.15;
+  }
+  .sidebar-heading em { font-style: italic; color: var(--gold-light); }
+
+  .sidebar-sub {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--warm-gray);
+    margin-bottom: 36px;
+  }
+
+  /* Filter tier in sidebar */
+  .filter-tier {
+    margin-bottom: 0;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 28px;
+  }
+  .filter-tier:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .filter-tier-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tier-step {
+    font-family: var(--font-serif);
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--crimson-light);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .clear-tier-btn {
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: auto;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+  .clear-tier-btn:hover { color: var(--crimson-light); }
+
+  /* Locked tier */
+  .filter-tier.locked { opacity: 0.3; pointer-events: none; }
+
+  /* Sidebar filter buttons — stacked vertical list */
+  .filter-btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .sidebar-filter-btn {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-align: left;
+    color: rgba(255,255,255,0.55);
+    background: none;
+    border: none;
+    border-left: 2px solid transparent;
+    padding: 7px 12px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .sidebar-filter-btn:hover {
+    color: var(--white);
+    background: rgba(255,255,255,0.04);
+    border-left-color: rgba(255,255,255,0.15);
+  }
+  .sidebar-filter-btn.active {
+    color: var(--white);
+    border-left-color: var(--crimson);
+    background: rgba(168,33,58,0.12);
+    font-weight: 500;
+  }
+  .sidebar-filter-btn .btn-count {
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--warm-gray);
+    background: rgba(255,255,255,0.06);
+    padding: 2px 7px;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+  .sidebar-filter-btn.active .btn-count {
+    background: rgba(168,33,58,0.3);
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* Subdivision placeholder text */
+  .subdiv-placeholder {
+    font-size: 12px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.2);
+    padding: 6px 12px;
+  }
+
+  /* ── Mobile: filter toggle button ── */
+  .lots-filter-toggle {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dark);
+    background: var(--white);
+    border: 1px solid var(--stone);
+    padding: 12px 20px;
+    cursor: pointer;
+    margin-bottom: 28px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .lots-filter-toggle:hover { background: var(--cream); border-color: var(--warm-gray); }
+  .lots-filter-toggle svg { flex-shrink: 0; }
+
+  /* ── Mobile: filter drawer overlay ── */
+  .lots-drawer-overlay {
+    display: none; /* shown via JS: display:block */
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 190;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s;
+  }
+  .lots-drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+  .lots-drawer {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: min(320px, 88vw);
+    background: var(--dark);
+    z-index: 195;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.77,0,0.18,1);
+    overflow-y: auto;
+    padding: 64px 28px 48px;
+    display: flex;
+    flex-direction: column;
+  }
+  .lots-drawer.open { transform: translateX(0); }
+
+  .lots-drawer-close {
+    position: absolute;
+    top: 18px; right: 18px;
+    background: none;
+    border: none;
+    color: var(--warm-gray);
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 1;
+    padding: 6px;
+    transition: color 0.2s;
+  }
+  .lots-drawer-close:hover { color: var(--white); }
+
+  /* ── Cards column ── */
+  .lots-cards-col {
+    padding: clamp(40px, 5vw, 64px) clamp(32px, 4vw, 56px);
+  }
+
+  /* Results bar */
+  .lots-results-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: clamp(24px, 3vw, 36px);
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--stone);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .lots-results-meta {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+  .lots-results-meta strong { font-weight: 600; color: var(--dark); }
+
+  .lots-active-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .lots-active-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    background: rgba(168,33,58,0.08);
+    border: 1px solid rgba(168,33,58,0.2);
+    padding: 4px 10px;
+  }
+
+  /* ── Lot cards ── */
+  .lots-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(16px, 2vw, 24px);
+  }
+
+  .lot-card {
+    background: var(--white);
+    border: 1px solid var(--stone);
+    overflow: hidden;
+    transition: box-shadow 0.3s, transform 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .lot-card:hover {
+    box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+
+  .lot-img {
+    position: relative;
+    overflow: hidden;
+    height: clamp(180px, 18vw, 240px);
+    flex-shrink: 0;
+  }
+  .lot-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.92);
+    transition: transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s;
+  }
+  .lot-card:hover .lot-img img { transform: scale(1.04); filter: brightness(1); }
+
+  .lot-badge {
+    position: absolute;
+    top: 14px; left: 14px;
+    background: var(--crimson);
+    color: var(--white);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+  }
+
+  .lot-info {
+    padding: clamp(18px, 2vw, 26px);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .lot-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 6px;
+  }
+  .lot-city-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--crimson);
+  }
+  .lot-subdivision {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+
+  .lot-price {
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 2.2vw, 28px);
+    font-weight: 300;
+    color: var(--dark);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .lot-address {
+    font-size: clamp(12px, 1.1vw, 13px);
+    font-weight: 300;
+    color: var(--warm-gray);
+    line-height: 1.5;
+    margin-bottom: auto;
+    padding-bottom: 14px;
+  }
+  .lot-specs {
+    display: flex;
+    gap: clamp(12px, 2vw, 20px);
+    padding-top: 14px;
+    border-top: 1px solid var(--stone);
+    flex-wrap: wrap;
+  }
+  .lot-spec { font-size: 11px; color: var(--warm-gray); letter-spacing: 0.02em; }
+  .lot-spec strong {
+    display: block;
+    font-size: clamp(12px, 1.2vw, 14px);
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 2px;
+  }
+
+  /* ── Empty state ── */
+  .lots-empty {
+    display: none;
+    grid-column: 1 / -1;
+    padding: clamp(48px,7vw,80px) 0;
+    text-align: center;
+  }
+  .lots-empty-title {
+    font-family: var(--font-serif);
+    font-size: clamp(22px,2.8vw,32px);
+    font-weight: 300;
+    color: var(--dark);
+    margin-bottom: 14px;
+  }
+  .lots-empty-sub {
+    font-size: clamp(13px,1.3vw,15px);
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--warm-gray);
+    max-width: 420px;
+    margin: 0 auto 28px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1100px) {
+    .lots-layout { grid-template-columns: 240px 1fr; }
+  }
+  @media (max-width: 860px) {
+    .lots-layout { grid-template-columns: 1fr; }
+    .lots-sidebar { display: none !important; } /* hidden; drawer used instead */
+    .lots-filter-toggle { display: flex; }
+    /* drawer overlay visibility is JS-controlled, not CSS */
+    .lots-cards-col { padding: 0; }
+    .lots-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) {
+    .lots-grid { grid-template-columns: 1fr; }
+  }
+  </style>
+</head>
+<body data-nav-style="solid">
+  <nav class="site-nav" id="main-nav">
+    <a href="../index.html" class="nav-logo">Castle<span class="apostrophe">'</span>s Custom Homes</a>
+    <div class="nav-right">
+      <a href="tel:2083091547" class="nav-phone">(208) 309-1547</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay" role="dialog" aria-label="Navigation menu">
+    <div class="overlay-accent"></div>
+    <div class="nav-overlay-inner">
+      <ul class="overlay-menu">
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">Build With Us</a>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="residential.html" onclick="closeNav()">Residential</a></li>
+            <li><a href="your-lot.html"    onclick="closeNav()">Build on Your Lot</a></li>
+            <li><a href="remodel.html"     onclick="closeNav()">Remodels</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a href="gallery.html" class="overlay-link" onclick="closeNav()">Gallery</a>
+          </div>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">For Sale</a>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="for-sale.html" onclick="closeNav()">Available Homes</a></li>
+            <li><a href="lots.html" onclick="closeNav()">Lots</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">About</a>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="about.html" onclick="closeNav()">Meet the Team</a></li>
+            <li><a href="our-story.html" onclick="closeNav()">Our Story</a></li>
+            <li><a href="community.html" onclick="closeNav()">Community</a></li>
+            <li><a href="partners.html" onclick="closeNav()">Our Partners</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">Financing</a>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="financing.html" onclick="closeNav()">Mortgage Calculator</a></li>
+            <li><a href="financing.html" onclick="closeNav()">Financing Options</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a href="contact.html" class="overlay-link" onclick="closeNav()">Contact</a>
+          </div>
+        </li>
+      </ul>
+      <div class="overlay-footer">
+        <div>
+          <p class="overlay-contact-label">Design & Estimates</p>
+          <p class="overlay-contact-val"><a href="mailto:kyle@castlescustomhomes.com">Kyle@CastlesCustomHomes.com</a></p>
+        </div>
+        <div>
+          <p class="overlay-contact-label">Follow Us</p>
+          <div class="overlay-socials">
+            <a href="https://instagram.com/castlescustomhomes" class="overlay-social" target="_blank">IG</a>
+            <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="overlay-social" target="_blank">FB</a>
+            <a href="https://twitter.com/castlescustom" class="overlay-social" target="_blank">TW</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Hero ── -->
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1600&q=80')"></div>
+    <div class="page-hero-content">
+      <p class="page-hero-eyebrow">Build on Your Terms</p>
+      <h1>Available<br><em>Lots</em></h1>
+      <p>Find the perfect piece of Idaho land. Use the filters to narrow by city, acreage, and subdivision.</p>
+    </div>
+  </div>
+
+  <!-- ── Mobile drawer overlay ── -->
+  <div class="lots-drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+  <div class="lots-drawer" id="lots-drawer">
+    <button class="lots-drawer-close" onclick="closeDrawer()" aria-label="Close filters">&times;</button>
+    <p class="sidebar-heading" style="margin-bottom:4px;">Filter <em>Lots</em></p>
+    <p class="sidebar-sub">Narrow your search</p>
+
+    <div class="filter-tier" id="tier-city-drawer">
+      <div class="filter-tier-label">
+        <span class="tier-step">01 &mdash;</span> City
+        <button class="clear-tier-btn" id="clear-city-d" onclick="clearCity()" style="display:none;">Reset</button>
+      </div>
+      <div class="filter-btn-group" id="city-btns-drawer">
+        <button class="sidebar-filter-btn active" onclick="selectCity(this,'all')">All Cities</button>
+        <button class="sidebar-filter-btn" onclick="selectCity(this,'twin-falls')">Twin Falls</button>
+        <button class="sidebar-filter-btn" onclick="selectCity(this,'kimberly')">Kimberly</button>
+        <button class="sidebar-filter-btn" onclick="selectCity(this,'jerome')">Jerome</button>
+        <button class="sidebar-filter-btn" onclick="selectCity(this,'hailey')">Hailey</button>
+        <button class="sidebar-filter-btn" onclick="selectCity(this,'carey')">Carey</button>
+        <button class="sidebar-filter-btn" onclick="selectCity(this,'bellevue')">Bellevue</button>
+        <button class="sidebar-filter-btn" onclick="selectCity(this,'mackay')">Mackay</button>
+        <button class="sidebar-filter-btn" onclick="selectCity(this,'other')">Surrounding Areas</button>
+      </div>
+    </div>
+
+    <div class="filter-tier locked" id="tier-acreage-drawer">
+      <div class="filter-tier-label">
+        <span class="tier-step">02 &mdash;</span> Acreage
+        <button class="clear-tier-btn" id="clear-acreage-d" onclick="clearAcreage()" style="display:none;">Reset</button>
+      </div>
+      <div class="filter-btn-group" id="acreage-btns-drawer">
+        <button class="sidebar-filter-btn" onclick="selectAcreage(this,'all')">Any Size</button>
+        <button class="sidebar-filter-btn" onclick="selectAcreage(this,'quarter')">Quarter Acre</button>
+        <button class="sidebar-filter-btn" onclick="selectAcreage(this,'half')">Half Acre</button>
+        <button class="sidebar-filter-btn" onclick="selectAcreage(this,'one')">One Acre</button>
+        <button class="sidebar-filter-btn" onclick="selectAcreage(this,'one-half')">One &amp; a Half Acres</button>
+        <button class="sidebar-filter-btn" onclick="selectAcreage(this,'two-plus')">Two Acres +</button>
+      </div>
+    </div>
+
+    <div class="filter-tier locked" id="tier-subdivision-drawer">
+      <div class="filter-tier-label">
+        <span class="tier-step">03 &mdash;</span> Subdivision
+        <button class="clear-tier-btn" id="clear-subdiv-d" onclick="clearSubdivision()" style="display:none;">Reset</button>
+      </div>
+      <div class="filter-btn-group" id="subdiv-btns-drawer">
+        <span class="subdiv-placeholder">Select a city first</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Main content ── -->
+  <div style="padding: var(--section-v) var(--gutter) 0;">
+    <div class="lots-layout">
+
+      <!-- ── Left sidebar (desktop) ── -->
+      <aside class="lots-sidebar">
+        <p class="sidebar-heading">Filter <em>Lots</em></p>
+        <p class="sidebar-sub">Narrow your search below</p>
+
+        <div class="filter-tier" id="tier-city">
+          <div class="filter-tier-label">
+            <span class="tier-step">01 &mdash;</span> City
+            <button class="clear-tier-btn" id="clear-city" onclick="clearCity()" style="display:none;">Reset</button>
+          </div>
+          <div class="filter-btn-group" id="city-btns">
+            <button class="sidebar-filter-btn active" onclick="selectCity(this,'all')">All Cities</button>
+            <button class="sidebar-filter-btn" onclick="selectCity(this,'twin-falls')">Twin Falls</button>
+            <button class="sidebar-filter-btn" onclick="selectCity(this,'kimberly')">Kimberly</button>
+            <button class="sidebar-filter-btn" onclick="selectCity(this,'jerome')">Jerome</button>
+            <button class="sidebar-filter-btn" onclick="selectCity(this,'hailey')">Hailey</button>
+            <button class="sidebar-filter-btn" onclick="selectCity(this,'carey')">Carey</button>
+            <button class="sidebar-filter-btn" onclick="selectCity(this,'bellevue')">Bellevue</button>
+            <button class="sidebar-filter-btn" onclick="selectCity(this,'mackay')">Mackay</button>
+            <button class="sidebar-filter-btn" onclick="selectCity(this,'other')">Surrounding Areas</button>
+          </div>
+        </div>
+
+        <div class="filter-tier locked" id="tier-acreage">
+          <div class="filter-tier-label">
+            <span class="tier-step">02 &mdash;</span> Acreage
+            <button class="clear-tier-btn" id="clear-acreage" onclick="clearAcreage()" style="display:none;">Reset</button>
+          </div>
+          <div class="filter-btn-group" id="acreage-btns">
+            <button class="sidebar-filter-btn" onclick="selectAcreage(this,'all')">Any Size</button>
+            <button class="sidebar-filter-btn" onclick="selectAcreage(this,'quarter')">Quarter Acre</button>
+            <button class="sidebar-filter-btn" onclick="selectAcreage(this,'half')">Half Acre</button>
+            <button class="sidebar-filter-btn" onclick="selectAcreage(this,'one')">One Acre</button>
+            <button class="sidebar-filter-btn" onclick="selectAcreage(this,'one-half')">One &amp; a Half Acres</button>
+            <button class="sidebar-filter-btn" onclick="selectAcreage(this,'two-plus')">Two Acres +</button>
+          </div>
+        </div>
+
+        <div class="filter-tier locked" id="tier-subdivision">
+          <div class="filter-tier-label">
+            <span class="tier-step">03 &mdash;</span> Subdivision
+            <button class="clear-tier-btn" id="clear-subdiv" onclick="clearSubdivision()" style="display:none;">Reset</button>
+          </div>
+          <div class="filter-btn-group" id="subdiv-btns">
+            <span class="subdiv-placeholder">Select a city first</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ── Cards column ── -->
+      <div class="lots-cards-col">
+
+        <!-- Mobile filter toggle -->
+        <button class="lots-filter-toggle" onclick="openDrawer()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <line x1="1" y1="4" x2="15" y2="4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="1" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="1" y1="12" x2="15" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          Filter Lots
+          <span id="filter-toggle-count" style="margin-left:auto;font-family:var(--font-serif);font-style:italic;font-size:13px;letter-spacing:0;text-transform:none;color:var(--warm-gray);font-weight:300;"></span>
+        </button>
+
+        <!-- Results bar -->
+        <div class="lots-results-bar">
+          <p class="lots-results-meta" id="results-meta"></p>
+          <div class="lots-active-tags" id="active-tags"></div>
+        </div>
+
+        <!-- Grid -->
+        <div class="lots-grid" id="lots-grid">
+<!-- ─── TWIN FALLS — Riverbend ─── -->
+      <div class="lot-card" data-city="twin-falls" data-acreage="half" data-subdivision="riverbend">
+        <div class="lot-img">
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=700&q=80" alt="Lot in Riverbend, Twin Falls">
+          <div class="lot-badge available">Available</div>
+        </div>
+        <div class="lot-info">
+          <div class="lot-meta-row">
+            <span class="lot-city-tag">Twin Falls</span>
+            <span class="lot-subdivision">Riverbend</span>
+          </div>
+          <p class="lot-price">$89,000</p>
+          <p class="lot-address">Lot 4, Riverbend Subdivision, Twin Falls, ID 83301</p>
+          <div class="lot-specs">
+            <div class="lot-spec"><strong>0.5 ac</strong>Half Acre</div>
+            <div class="lot-spec"><strong>Utilities</strong>At Street</div>
+            <div class="lot-spec"><strong>Zoning</strong>R1</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lot-card" data-city="twin-falls" data-acreage="one" data-subdivision="riverbend">
+        <div class="lot-img">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&q=80" alt="Lot in Riverbend, Twin Falls">
+          <div class="lot-badge available">Available</div>
+        </div>
+        <div class="lot-info">
+          <div class="lot-meta-row">
+            <span class="lot-city-tag">Twin Falls</span>
+            <span class="lot-subdivision">Riverbend</span>
+          </div>
+          <p class="lot-price">$114,000</p>
+          <p class="lot-address">Lot 9, Riverbend Subdivision, Twin Falls, ID 83301</p>
+          <div class="lot-specs">
+            <div class="lot-spec"><strong>1.0 ac</strong>One Acre</div>
+            <div class="lot-spec"><strong>Utilities</strong>At Street</div>
+            <div class="lot-spec"><strong>Zoning</strong>R1</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── TWIN FALLS — Wild Rose ─── -->
+      <div class="lot-card" data-city="twin-falls" data-acreage="quarter" data-subdivision="wild-rose">
+        <div class="lot-img">
+          <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=700&q=80" alt="Lot in Wild Rose, Twin Falls">
+          <div class="lot-badge available">Available</div>
+        </div>
+        <div class="lot-info">
+          <div class="lot-meta-row">
+            <span class="lot-city-tag">Twin Falls</span>
+            <span class="lot-subdivision">Wild Rose</span>
+          </div>
+          <p class="lot-price">$72,500</p>
+          <p class="lot-address">Lot 12, Wild Rose Estates, Twin Falls, ID 83301</p>
+          <div class="lot-specs">
+            <div class="lot-spec"><strong>0.25 ac</strong>Quarter Acre</div>
+            <div class="lot-spec"><strong>Utilities</strong>At Street</div>
+            <div class="lot-spec"><strong>Zoning</strong>R2</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lot-card" data-city="twin-falls" data-acreage="half" data-subdivision="wild-rose">
+        <div class="lot-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="Lot in Wild Rose, Twin Falls">
+          <div class="lot-badge available">Available</div>
+        </div>
+        <div class="lot-info">
+          <div class="lot-meta-row">
+            <span class="lot-city-tag">Twin Falls</span>
+            <span class="lot-subdivision">Wild Rose</span>
+          </div>
+          <p class="lot-price">$95,000</p>
+          <p class="lot-address">Lot 17, Wild Rose Estates, Twin Falls, ID 83301</p>
+          <div class="lot-specs">
+            <div class="lot-spec"><strong>0.5 ac</strong>Half Acre</div>
+            <div class="lot-spec"><strong>Utilities</strong>At Street</div>
+            <div class="lot-spec"><strong>Zoning</strong>R2</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── TWIN FALLS — Eastern Sun ─── -->
+      <div class="lot-card" data-city="twin-falls" data-acreage="one" data-subdivision="eastern-sun">
+        <div class="lot-img">
+          <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80" alt="Lot in Eastern Sun, Twin Falls">
+          <div class="lot-badge available">Available</div>
+        </div>
+        <div class="lot-info">
+          <div class="lot-meta-row">
+            <span class="lot-city-tag">Twin Falls</span>
+            <span class="lot-subdivision">Eastern Sun</span>
+          </div>
+          <p class="lot-price">$118,000</p>
+          <p class="lot-address">Lot 3, Eastern Sun Subdivision, Twin Falls, ID 83301</p>
+          <div class="lot-specs">
+            <div class="lot-spec"><strong>1.0 ac</strong>One Acre</div>
+            <div class="lot-spec"><strong>Utilities</strong>Available</div>
+            <div class="lot-spec"><strong>Zoning</strong>R1</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lot-card" data-city="twin-falls" data-acreage="one-half" data-subdivision="eastern-sun">
+        <div class="lot-img">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="Lot in Eastern Sun, Twin Falls">
+          <div class="lot-badge available">Available</div>
+        </div>
+        <div class="lot-info">
+          <div class="lot-meta-row">
+            <span class="lot-city-tag">Twin Falls</span>
+            <span class="lot-subdivision">Eastern Sun</span>
+          </div>
+          <p class="lot-price">$139,500</p>
+          <p class="lot-address">Lot 7, Eastern Sun Subdivision, Twin Falls, ID 83301</p>
+          <div class="lot-specs">
+            <div class="lot-spec"><strong>1.5 ac</strong>One &amp; a Half Acres</div>
+            <div class="lot-spec"><strong>Utilities</strong>Available</div>
+            <div class="lot-spec"><strong>Zoning</strong>R1</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── KIMBERLY — Eastern Sky ─── -->
+      <div class="lot-card" data-city="kimberly" data-acreage="half" data-subdivision="eastern-sky">
+        <div class="lot-img">
+          <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=700&q=80" alt="Lot in Eastern Sky, Kimberly">
+          <div class="lot-badge available">Available</div>
+        </div>
+        <div class="lot-info">
+          <div class="lot-meta-row">
+            <span class="lot-city-tag">Kimberly</span>
+            <span class="lot-subdivision">Eastern Sky</span>
+          </div>
+          <p class="lot-price">$82,000</p>
+          <p class="lot-address">Lot 6, Eastern Sky Subdivision, Kimberly, ID 83341</p>
+          <div class="lot-specs">
+            <div class="lot-spec"><strong>0.5 ac</strong>Half Acre</div>
+            <div class="lot-spec"><strong>Utilities</strong>At Street</div>
+            <div class="lot-spec"><strong>Zoning</strong>R1</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lot-card" data-city="kimberly" data-acreage="one" data-subdivision="eastern-sky">
+        <div class="lot-img">
+          <img src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?w=700&q=80" alt="Lot in Eastern Sky, Kimberly">
+          <div class="lot-badge available">Available</div>
+        </div>
+        <div class="lot-info">
+          <div class="lot-meta-row">
+            <span class="lot-city-tag">Kimberly</span>
+            <span class="lot-subdivision">Eastern Sky</span>
+          </div>
+          <p class="lot-price">$105,000</p>
+          <p class="lot-address">Lot 11, Eastern Sky Subdivision, Kimberly, ID 83341</p>
+          <div class="lot-specs">
+            <div class="lot-spec"><strong>1.0 ac</strong>One Acre</div>
+            <div class="lot-spec"><strong>Utilities</strong>At Street</div>
+            <div class="lot-spec"><strong>Zoning</strong>R1</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── KIMBERLY — Olsen Farms ─── -->
+      <div class="lot-card" data-city="kimberly" data-acreage="one" data-subdivision="olsen-farms">
+        <div class="lot-img">
+          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=700&q=80" alt="Lot in Olsen Farms, Kimberly">
+          <div class="lot-badge available">Available</div>
+        </div>
+        <div class="lot-info">
+          <div class="lot-meta-row">
+            <span class="lot-city-tag">Kimberly</span>
+            <span class="lot-subdivision">Olsen Farms</span>
+          </div>
+          <p class="lot-price">$122,000</p>
+          <p class="lot-address">Lot 2, Olsen Farms Subdivision, Kimberly, ID 83341</p>
+          <div class="lot-specs">
+            <div class="lot-spec"><strong>1.0 ac</strong>One Acre</div>
+            <div class="lot-spec"><strong>Utilities</strong>Available</div>
+            <div class="lot-spec"><strong>Zoning</strong>AG-R</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lot-card" data-city="kimberly" data-acreage="two-plus" data-subdivision="olsen-farms">
+        <div class="lot-img">
+          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=700&q=80" alt="Lot in Olsen Farms, Kimberly">
+          <div class="lot-badge available">Available</div>
+        </div>
+        <div class="lot-info">
+          <div class="lot-meta-row">
+            <span class="lot-city-tag">Kimberly</span>
+            <span class="lot-subdivision">Olsen Farms</span>
+          </div>
+          <p class="lot-price">$168,000</p>
+          <p class="lot-address">Lot 5, Olsen Farms Subdivision, Kimberly, ID 83341</p>
+          <div class="lot-specs">
+            <div class="lot-spec"><strong>2.4 ac</strong>Two Acres +</div>
+            <div class="lot-spec"><strong>Utilities</strong>Available</div>
+            <div class="lot-spec"><strong>Zoning</strong>AG-R</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── OTHER CITIES — no subdivisions ─── -->
+      <div class="lot-card" data-city="jerome" data-acreage="half" data-subdivision="none">
+        <div class="lot-img">
+          <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=700&q=80" alt="Lot in Jerome, Idaho">
+          <div class="lot-badge available">Available</div>
+        </div>
+        <div class="lot-info">
+          <div class="lot-meta-row">
+            <span class="lot-city-tag">Jerome</span>
+          </div>
+          <p class="lot-price">$78,500</p>
+          <p class="lot-address">Lot 8, Clearwater Dr, Jerome, ID 83338</p>
+          <div class="lot-specs">
+            <div class="lot-spec"><strong>0.5 ac</strong>Half Acre</div>
+            <div class="lot-spec"><strong>Utilities</strong>At Street</div>
+            <div class="lot-spec"><strong>Zoning</strong>R1</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lot-card" data-city="hailey" data-acreage="one" data-subdivision="none">
+        <div class="lot-img">
+          <img src="https://images.unsplash.com/photo-1510797215324-95aa89f43c33?w=700&q=80" alt="Lot in Hailey, Idaho">
+          <div class="lot-badge available">Available</div>
+        </div>
+        <div class="lot-info">
+          <div class="lot-meta-row">
+            <span class="lot-city-tag">Hailey</span>
+          </div>
+          <p class="lot-price">$195,000</p>
+          <p class="lot-address">Lot 3, Woodside Ranch Rd, Hailey, ID 83333</p>
+          <div class="lot-specs">
+            <div class="lot-spec"><strong>1.0 ac</strong>One Acre</div>
+            <div class="lot-spec"><strong>Utilities</strong>Available</div>
+            <div class="lot-spec"><strong>Zoning</strong>R1</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lot-card" data-city="bellevue" data-acreage="two-plus" data-subdivision="none">
+        <div class="lot-img">
+          <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=700&q=80" alt="Lot in Bellevue, Idaho">
+          <div class="lot-badge available">Available</div>
+        </div>
+        <div class="lot-info">
+          <div class="lot-meta-row">
+            <span class="lot-city-tag">Bellevue</span>
+          </div>
+          <p class="lot-price">$148,000</p>
+          <p class="lot-address">Lot 1, Summit View Ln, Bellevue, ID 83313</p>
+          <div class="lot-specs">
+            <div class="lot-spec"><strong>2.1 ac</strong>Two Acres +</div>
+            <div class="lot-spec"><strong>Utilities</strong>Well &amp; Septic</div>
+            <div class="lot-spec"><strong>Zoning</strong>AG</div>
+          </div>
+        </div>
+      </div>
+
+    
+        </div><!-- /.lots-grid -->
+
+        <!-- Empty state -->
+        <div class="lots-empty" id="lots-empty">
+          <h3 class="lots-empty-title">No lots match your filters.</h3>
+          <p class="lots-empty-sub">Try broadening your search, or contact Kyle — new lots are added regularly and he may know of upcoming availability before it's listed.</p>
+          <a href="contact.html" class="btn-primary">Ask Kyle About Availability</a>
+        </div>
+
+        <!-- Bottom CTA -->
+        <div style="text-align:left;margin-top:clamp(48px,7vw,80px);padding-top:clamp(32px,4vw,48px);border-top:1px solid var(--stone);">
+          <p class="cta-note">Don't see the right lot? We can help you find one.</p>
+          <a href="contact.html" class="btn-primary">Talk to Kyle About Lots</a>
+        </div>
+
+      </div><!-- /.lots-cards-col -->
+    </div><!-- /.lots-layout -->
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <p class="footer-brand">Castle<span>'</span>s Custom Homes</p>
+        <p class="footer-tagline">Quality builders serving Twin Falls and the Magic Valley, Idaho. Family-owned, locally rooted, community proud.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/castlescustomhomes" class="footer-social" target="_blank">IG</a>
+          <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="footer-social" target="_blank">FB</a>
+          <a href="https://twitter.com/castlescustom" class="footer-social" target="_blank">TW</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Services</p>
+        <ul class="footer-links">
+          <li><a href="residential.html">Custom Residential</a></li>
+          <li><a href="your-lot.html">Build on Your Lot</a></li>
+          <li><a href="remodel.html">Remodels</a></li>
+          <li><a href="for-sale.html">For Sale</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Company</p>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html">Meet the Team</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="financing.html">Financing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Quick Links</p>
+        <ul class="footer-links">
+          <li><a href="financing.html">Mortgage Calculator</a></li>
+          <li><a href="contact.html">Get a Quote</a></li>
+          <li><a href="http://www.castlescornercorp.com" target="_blank">Castle's Corner Stores</a></li>
+          <li><a href="tel:2083091547">(208) 309-1547</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 Castle Corner Corp. All rights reserved.</p>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/reveal.js"></script>
+  <script>
+  /* ════════════════════════════════════════════════
+     Lots — cascading 3-tier filter
+     Syncs both sidebar (desktop) and drawer (mobile)
+  ════════════════════════════════════════════════ */
+
+  const SUBDIVISIONS = {
+    'twin-falls': [
+      { value: 'riverbend',   label: 'Riverbend'   },
+      { value: 'wild-rose',   label: 'Wild Rose'   },
+      { value: 'eastern-sun', label: 'Eastern Sun' },
+    ],
+    'kimberly': [
+      { value: 'eastern-sky', label: 'Eastern Sky' },
+      { value: 'olsen-farms', label: 'Olsen Farms' },
+    ],
+  };
+
+  let activeCity    = 'all';
+  let activeAcreage = 'all';
+  let activeSubdiv  = 'all';
+
+  /* ── Drawer open / close ── */
+  function openDrawer() {
+    const overlay = document.getElementById('drawer-overlay');
+    overlay.style.display = 'block';
+    // Force reflow so the transition fires
+    overlay.offsetHeight;
+    overlay.classList.add('open');
+    document.getElementById('lots-drawer').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    const overlay = document.getElementById('drawer-overlay');
+    overlay.classList.remove('open');
+    document.getElementById('lots-drawer').classList.remove('open');
+    document.body.style.overflow = '';
+    // Hide overlay fully after transition
+    setTimeout(() => { overlay.style.display = 'none'; }, 380);
+  }
+
+  /* ── Sync both sidebar + drawer button groups ── */
+  function syncBtns(groupIds, activeValue) {
+    groupIds.forEach(id => {
+      const group = document.getElementById(id);
+      if (!group) return;
+      group.querySelectorAll('.sidebar-filter-btn').forEach(btn => {
+        const val = btn.getAttribute('data-val') || btn.textContent.trim();
+        btn.classList.toggle('active', false);
+      });
+    });
+  }
+
+  function setActiveInGroups(groupIds, value) {
+    groupIds.forEach(id => {
+      const group = document.getElementById(id);
+      if (!group) return;
+      group.querySelectorAll('.sidebar-filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.val === value);
+      });
+    });
+  }
+
+  function resetGroups(groupIds) {
+    groupIds.forEach(id => {
+      const group = document.getElementById(id);
+      if (!group) return;
+      group.querySelectorAll('.sidebar-filter-btn').forEach(b => b.classList.remove('active'));
+    });
+  }
+
+  /* ── Tier 1: City ── */
+  function selectCity(btn, city) {
+    activeCity    = city;
+    activeAcreage = 'all';
+    activeSubdiv  = 'all';
+
+    // Mark active in whichever group the btn belongs to
+    const parentId = btn.parentElement.id;
+    ['city-btns','city-btns-drawer'].forEach(id => {
+      const g = document.getElementById(id);
+      if (!g) return;
+      g.querySelectorAll('.sidebar-filter-btn').forEach(b => b.classList.remove('active'));
+    });
+    // Mark the correct button in both groups by matching textContent
+    ['city-btns','city-btns-drawer'].forEach(id => {
+      const g = document.getElementById(id);
+      if (!g) return;
+      g.querySelectorAll('.sidebar-filter-btn').forEach(b => {
+        if (b.textContent.trim() === btn.textContent.trim()) b.classList.add('active');
+      });
+    });
+
+    // Reset acreage
+    resetGroups(['acreage-btns','acreage-btns-drawer']);
+    ['tier-acreage','tier-acreage-drawer'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('locked');
+    });
+    ['clear-acreage','clear-acreage-d'].forEach(id => { const el=document.getElementById(id); if(el) el.style.display='none'; });
+
+    // Rebuild subdivision lists
+    buildSubdivisions(city);
+
+    // Reset clear buttons
+    ['clear-city','clear-city-d'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = city === 'all' ? 'none' : 'inline';
+    });
+
+    applyFilters();
+  }
+
+  function clearCity() {
+    activeCity = 'all'; activeAcreage = 'all'; activeSubdiv = 'all';
+    resetGroups(['city-btns','city-btns-drawer']);
+    // Re-mark All Cities
+    ['city-btns','city-btns-drawer'].forEach(id => {
+      const g = document.getElementById(id);
+      if (!g) return;
+      const first = g.querySelector('.sidebar-filter-btn');
+      if (first) first.classList.add('active');
+    });
+    ['clear-city','clear-city-d'].forEach(id => { const el=document.getElementById(id); if(el) el.style.display='none'; });
+    ['tier-acreage','tier-acreage-drawer'].forEach(id => { const el=document.getElementById(id); if(el) el.classList.add('locked'); });
+    resetGroups(['acreage-btns','acreage-btns-drawer']);
+    ['clear-acreage','clear-acreage-d'].forEach(id => { const el=document.getElementById(id); if(el) el.style.display='none'; });
+    buildSubdivisions('all');
+    applyFilters();
+  }
+
+  /* ── Tier 2: Acreage ── */
+  function selectAcreage(btn, size) {
+    activeAcreage = size;
+    activeSubdiv  = 'all';
+
+    ['acreage-btns','acreage-btns-drawer'].forEach(id => {
+      const g = document.getElementById(id);
+      if (!g) return;
+      g.querySelectorAll('.sidebar-filter-btn').forEach(b => {
+        b.classList.toggle('active', b.textContent.trim() === btn.textContent.trim());
+      });
+    });
+    ['clear-acreage','clear-acreage-d'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = size === 'all' ? 'none' : 'inline';
+    });
+
+    resetGroups(['subdiv-btns','subdiv-btns-drawer']);
+    ['clear-subdiv','clear-subdiv-d'].forEach(id => { const el=document.getElementById(id); if(el) el.style.display='none'; });
+    applyFilters();
+  }
+
+  function clearAcreage() {
+    activeAcreage = 'all'; activeSubdiv = 'all';
+    resetGroups(['acreage-btns','acreage-btns-drawer']);
+    ['clear-acreage','clear-acreage-d'].forEach(id => { const el=document.getElementById(id); if(el) el.style.display='none'; });
+    resetGroups(['subdiv-btns','subdiv-btns-drawer']);
+    ['clear-subdiv','clear-subdiv-d'].forEach(id => { const el=document.getElementById(id); if(el) el.style.display='none'; });
+    applyFilters();
+  }
+
+  /* ── Tier 3: Subdivision ── */
+  function selectSubdivision(btn, subdiv) {
+    activeSubdiv = subdiv;
+    ['subdiv-btns','subdiv-btns-drawer'].forEach(id => {
+      const g = document.getElementById(id);
+      if (!g) return;
+      g.querySelectorAll('.sidebar-filter-btn').forEach(b => {
+        b.classList.toggle('active', b.textContent.trim() === btn.textContent.trim());
+      });
+    });
+    ['clear-subdiv','clear-subdiv-d'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = subdiv === 'all' ? 'none' : 'inline';
+    });
+    applyFilters();
+  }
+
+  function clearSubdivision() {
+    activeSubdiv = 'all';
+    resetGroups(['subdiv-btns','subdiv-btns-drawer']);
+    ['clear-subdiv','clear-subdiv-d'].forEach(id => { const el=document.getElementById(id); if(el) el.style.display='none'; });
+    applyFilters();
+  }
+
+  /* ── Build subdivision lists ── */
+  function buildSubdivisions(city) {
+    const subs = SUBDIVISIONS[city];
+    ['subdiv-btns','subdiv-btns-drawer'].forEach(id => {
+      const container = document.getElementById(id);
+      const tierId    = id === 'subdiv-btns' ? 'tier-subdivision' : 'tier-subdivision-drawer';
+      const tier      = document.getElementById(tierId);
+      if (!container) return;
+
+      if (!subs || city === 'all') {
+        if (tier) tier.classList.add('locked');
+        container.innerHTML = '<span class="subdiv-placeholder">Select a city first</span>';
+        return;
+      }
+
+      if (tier) tier.classList.remove('locked');
+      container.innerHTML = '';
+
+      const anyBtn = document.createElement('button');
+      anyBtn.className = 'sidebar-filter-btn';
+      anyBtn.textContent = 'Any Subdivision';
+      anyBtn.onclick = () => selectSubdivision(anyBtn, 'all');
+      container.appendChild(anyBtn);
+
+      subs.forEach(sub => {
+        const btn = document.createElement('button');
+        btn.className = 'sidebar-filter-btn';
+        btn.textContent = sub.label;
+        btn.onclick = () => selectSubdivision(btn, sub.value);
+        container.appendChild(btn);
+      });
+    });
+  }
+
+  /* ── Apply filters & update UI ── */
+  function applyFilters() {
+    const cards = document.querySelectorAll('#lots-grid .lot-card');
+    let visible = 0;
+
+    cards.forEach(card => {
+      const show =
+        (activeCity    === 'all' || card.dataset.city        === activeCity)    &&
+        (activeAcreage === 'all' || card.dataset.acreage     === activeAcreage) &&
+        (activeSubdiv  === 'all' || card.dataset.subdivision === activeSubdiv);
+
+      card.style.display = show ? 'block' : 'none';
+      if (show) visible++;
+    });
+
+    // Results meta
+    const meta = document.getElementById('results-meta');
+    if (meta) meta.innerHTML = '<strong>' + visible + '</strong> lot' + (visible !== 1 ? 's' : '') + ' available';
+
+    // Active tags
+    const tagsEl = document.getElementById('active-tags');
+    if (tagsEl) {
+      tagsEl.innerHTML = '';
+      const tagLabels = [];
+      if (activeCity    !== 'all') tagLabels.push(document.querySelector('#city-btns .sidebar-filter-btn.active')?.textContent.trim() || activeCity);
+      if (activeAcreage !== 'all') tagLabels.push(document.querySelector('#acreage-btns .sidebar-filter-btn.active')?.textContent.trim() || activeAcreage);
+      if (activeSubdiv  !== 'all') tagLabels.push(document.querySelector('#subdiv-btns .sidebar-filter-btn.active')?.textContent.trim() || activeSubdiv);
+      tagLabels.forEach(label => {
+        const tag = document.createElement('span');
+        tag.className = 'lots-active-tag';
+        tag.textContent = label;
+        tagsEl.appendChild(tag);
+      });
+    }
+
+    // Mobile toggle count badge
+    const toggleCount = document.getElementById('filter-toggle-count');
+    if (toggleCount) {
+      const activeCount = [activeCity, activeAcreage, activeSubdiv].filter(v => v !== 'all').length;
+      toggleCount.textContent = activeCount > 0 ? activeCount + ' active' : '';
+    }
+
+    // Empty state
+    const empty = document.getElementById('lots-empty');
+    if (empty) empty.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  // Init
+  applyFilters();
+  </script>
+</body>
+</html>

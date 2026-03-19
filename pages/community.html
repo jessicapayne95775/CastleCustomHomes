@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community | Castle's Custom Homes</title>
+  <meta name="description" content="Castle's Custom Homes is proud to be rooted in Twin Falls and the Magic Valley — investing in the community we build in.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <style>
+    /* ── Community page ── */
+    .community-intro {
+      max-width: 780px;
+      margin: 0 auto clamp(48px,7vw,88px);
+      text-align: center;
+    }
+    .community-intro-text {
+      font-family: var(--font-serif);
+      font-size: clamp(18px,2.2vw,26px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--mid);
+      margin-top: 24px;
+    }
+
+    /* ── Commitment blocks (alternating image + text) ── */
+    .commitment-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      overflow: hidden;
+      margin-bottom: clamp(4px,0.5vw,6px);
+    }
+    .commitment-block.flip { direction: rtl; }
+    .commitment-block.flip > * { direction: ltr; }
+
+    .commitment-img {
+      overflow: hidden;
+      min-height: clamp(280px,32vw,480px);
+    }
+    .commitment-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: brightness(0.88);
+      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s;
+    }
+    .commitment-block:hover .commitment-img img {
+      transform: scale(1.03);
+      filter: brightness(0.95);
+    }
+    .commitment-text {
+      background: var(--cream);
+      padding: clamp(48px,6vw,88px) clamp(40px,5vw,72px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .commitment-text h3 {
+      font-family: var(--font-serif);
+      font-size: clamp(28px,3vw,42px);
+      font-weight: 300;
+      color: var(--dark);
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    .commitment-text h3 em { font-style: italic; color: var(--crimson); }
+    .commitment-text p {
+      font-size: clamp(14px,1.4vw,16px);
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--mid);
+      margin-bottom: 16px;
+    }
+    .commitment-text p:last-of-type { margin-bottom: 0; }
+
+    /* ── Community pillars strip ── */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 1px;
+      background: var(--stone);
+    }
+    .pillar {
+      background: var(--dark);
+      padding: clamp(32px,4vw,52px) clamp(20px,3vw,36px);
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .pillar:hover { background: #252320; }
+    .pillar-icon {
+      font-family: var(--font-serif);
+      font-size: clamp(36px,4.5vw,52px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--crimson-light);
+      opacity: 0.7;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .pillar h4 {
+      font-family: var(--font-serif);
+      font-size: clamp(17px,1.8vw,22px);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .pillar p {
+      font-size: clamp(12px,1.1vw,13px);
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--warm-gray);
+    }
+
+    /* ── Castle's Corner connection ── */
+    .corner-band {
+      background: var(--dark);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: clamp(320px,35vw,480px);
+    }
+    .corner-img {
+      background: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&q=80') center/cover no-repeat;
+      filter: brightness(0.45) sepia(0.2);
+    }
+    .corner-content {
+      padding: clamp(48px,6vw,88px) clamp(40px,5vw,72px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media (max-width: 1024px) {
+      .commitment-block { grid-template-columns: 1fr; }
+      .commitment-block.flip { direction: ltr; }
+      .commitment-img { min-height: clamp(220px,40vw,360px); }
+      .pillars { grid-template-columns: 1fr 1fr; }
+      .corner-band { grid-template-columns: 1fr; }
+      .corner-img { display: none; }
+    }
+    @media (max-width: 640px) {
+      .pillars { grid-template-columns: 1fr 1fr; }
+      .commitment-text { padding: clamp(36px,5vw,56px) clamp(24px,4vw,40px); }
+    }
+    @media (max-width: 400px) {
+      .pillars { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body data-nav-style="solid">
+
+  <nav class="site-nav" id="main-nav">
+    <a href="../index.html" class="nav-logo">Castle<span class="apostrophe">'</span>s Custom Homes</a>
+    <div class="nav-right">
+      <a href="tel:2083091547" class="nav-phone">(208) 309-1547</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay" role="dialog" aria-label="Navigation menu">
+    <div class="overlay-accent"></div>
+    <div class="nav-overlay-inner">
+      <ul class="overlay-menu">
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">Build With Us</a>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="residential.html" onclick="closeNav()">Residential</a></li>
+            <li><a href="your-lot.html"    onclick="closeNav()">Build on Your Lot</a></li>
+            <li><a href="remodel.html"     onclick="closeNav()">Remodels</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a href="gallery.html" class="overlay-link" onclick="closeNav()">Gallery</a>
+          </div>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">For Sale</a>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="for-sale.html" onclick="closeNav()">Available Homes</a></li>
+            <li><a href="lots.html"     onclick="closeNav()">Lots</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">About</a>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="about.html"      onclick="closeNav()">Meet the Team</a></li>
+            <li><a href="our-story.html"  onclick="closeNav()">Our Story</a></li>
+            <li><a href="community.html"  onclick="closeNav()">Community</a></li>
+            <li><a href="partners.html"   onclick="closeNav()">Our Partners</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">Financing</a>
+            <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
+          </div>
+          <ul class="sub-menu">
+            <li><a href="financing.html" onclick="closeNav()">Mortgage Calculator</a></li>
+            <li><a href="financing.html" onclick="closeNav()">Financing Options</a></li>
+          </ul>
+        </li>
+        <li class="overlay-item">
+          <div class="overlay-item-header">
+            <a href="contact.html" class="overlay-link" onclick="closeNav()">Contact</a>
+          </div>
+        </li>
+      </ul>
+      <div class="overlay-footer">
+        <div>
+          <p class="overlay-contact-label">Design & Estimates</p>
+          <p class="overlay-contact-val"><a href="mailto:kyle@castlescustomhomes.com">Kyle@CastlesCustomHomes.com</a></p>
+        </div>
+        <div>
+          <p class="overlay-contact-label">Follow Us</p>
+          <div class="overlay-socials">
+            <a href="https://instagram.com/castlescustomhomes" class="overlay-social" target="_blank">IG</a>
+            <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="overlay-social" target="_blank">FB</a>
+            <a href="https://twitter.com/castlescustom" class="overlay-social" target="_blank">TW</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Hero ── -->
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1600&q=80')"></div>
+    <div class="page-hero-content">
+      <p class="page-hero-eyebrow">About Us</p>
+      <h1>Rooted in the<br><em>Magic Valley</em></h1>
+      <p>We don't just build in this community — we live in it, invest in it, and are proud to call it home.</p>
+    </div>
+  </div>
+
+  <!-- ── Intro ── -->
+  <div class="content-section">
+    <div class="community-intro reveal">
+      <p class="section-eyebrow center">Our Community</p>
+      <h2 class="section-title">More Than a Builder —<br>A <em>Neighbor</em></h2>
+      <p class="community-intro-text">Castle's Custom Homes was founded in the Magic Valley and has never left. Every home we build, every subcontractor we hire, and every relationship we form stays right here — because this is where we live too.</p>
+    </div>
+  </div>
+
+  <!-- ── Commitment blocks ── -->
+  <div class="commitment-block reveal">
+    <div class="commitment-img">
+      <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80" alt="Families in Twin Falls">
+    </div>
+    <div class="commitment-text">
+      <p class="section-eyebrow">Hire Local</p>
+      <h3>We Keep Work<br>in the <em>Valley</em></h3>
+      <p>Every subcontractor, supplier, and tradesperson we work with is local. We believe that building a home should strengthen the local economy — not send money elsewhere.</p>
+      <p>From the concrete crews to the finish carpenters, the people building your home are your neighbors. They take pride in the work because they live here too.</p>
+    </div>
+  </div>
+
+  <div class="commitment-block flip reveal">
+    <div class="commitment-img">
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900&q=80" alt="Youth in the community">
+    </div>
+    <div class="commitment-text">
+      <p class="section-eyebrow">Youth & Education</p>
+      <h3>Investing in the<br>Next <em>Generation</em></h3>
+      <p>Kyle and Tammy believe in giving young people in the Magic Valley the same opportunities they had. Castle's actively supports youth programs, school initiatives, and vocational education that introduce the next generation to careers in the trades.</p>
+      <p>The construction industry needs skilled, passionate people — and we're committed to helping build that pipeline right here at home.</p>
+    </div>
+  </div>
+
+  <div class="commitment-block reveal">
+    <div class="commitment-img">
+      <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=900&q=80" alt="Community events Twin Falls">
+    </div>
+    <div class="commitment-text">
+      <p class="section-eyebrow">Local Events</p>
+      <h3>Showing Up<br>for <em>Twin Falls</em></h3>
+      <p>You'll find Castle's at local fairs, sponsoring community events, and supporting organizations that make the Magic Valley a better place to live and raise a family.</p>
+      <p>We know that a strong community makes for better neighborhoods — and better neighborhoods are what we're in the business of building.</p>
+    </div>
+  </div>
+
+  <!-- ── Community pillars ── -->
+  <div class="pillars reveal">
+    <div class="pillar">
+      <div class="pillar-icon">H</div>
+      <h4>Hire Local</h4>
+      <p>Every trade on every job is sourced from within the Magic Valley region whenever possible.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">G</div>
+      <h4>Give Back</h4>
+      <p>A portion of every completed project supports local causes — from youth sports to food programs.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">B</div>
+      <h4>Buy Local</h4>
+      <p>Materials are sourced from local suppliers first. Keeping dollars local is part of how we build.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">S</div>
+      <h4>Stay Local</h4>
+      <p>Castle's has no plans to expand beyond the Magic Valley. This is home — and we're here to stay.</p>
+    </div>
+  </div>
+
+  <!-- ── Castle's Corner connection ── -->
+  <div class="corner-band">
+    <div class="corner-img"></div>
+    <div class="corner-content">
+      <p class="section-eyebrow" style="color:var(--crimson-light);">Castle's Corner Corp</p>
+      <h2 class="section-title light" style="margin-bottom:20px;">A Family of<br><em>Local Businesses</em></h2>
+      <p class="cta-body">Castle's Custom Homes is part of the Castle's Corner Corp family — a group of locally owned businesses that share the same commitment to community, quality, and the Magic Valley.</p>
+      <div class="cta-actions">
+        <a href="http://www.castlescornercorp.com" class="btn-primary" target="_blank">Visit Castle's Corner</a>
+        <a href="contact.html" class="btn-outline-light">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <p class="footer-brand">Castle<span>'</span>s Custom Homes</p>
+        <p class="footer-tagline">Quality builders serving Twin Falls and the Magic Valley, Idaho. Family-owned, locally rooted, community proud.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/castlescustomhomes" class="footer-social" target="_blank">IG</a>
+          <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="footer-social" target="_blank">FB</a>
+          <a href="https://twitter.com/castlescustom" class="footer-social" target="_blank">TW</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Services</p>
+        <ul class="footer-links">
+          <li><a href="residential.html">Custom Residential</a></li>
+          <li><a href="your-lot.html">Build on Your Lot</a></li>
+          <li><a href="remodel.html">Remodels</a></li>
+          <li><a href="for-sale.html">For Sale</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Company</p>
+        <ul class="footer-links">
+          <li><a href="about.html">Meet the Team</a></li>
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="community.html">Community</a></li>
+          <li><a href="partners.html">Our Partners</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Quick Links</p>
+        <ul class="footer-links">
+          <li><a href="financing.html">Mortgage Calculator</a></li>
+          <li><a href="contact.html">Get a Quote</a></li>
+          <li><a href="http://www.castlescornercorp.com" target="_blank">Castle's Corner Stores</a></li>
+          <li><a href="tel:2083091547">(208) 309-1547</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2025 Castle Corner Corp. All rights reserved.</p>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+  </footer>
+  <script src="../js/nav.js"></script>
+  <script src="../js/reveal.js"></script>
+</body>
+</html>

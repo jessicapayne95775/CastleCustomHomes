@@ -28,13 +28,12 @@
       <ul class="overlay-menu">
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">Build With Us</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">Build With Us</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
             <li><a href="residential.html" onclick="closeNav()">Residential</a></li>
             <li><a href="your-lot.html"    onclick="closeNav()">Build on Your Lot</a></li>
-            <li><a href="commercial.html"  onclick="closeNav()">Commercial</a></li>
             <li><a href="remodel.html"     onclick="closeNav()">Remodels</a></li>
           </ul>
         </li>
@@ -45,29 +44,29 @@
         </li>
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">For Sale</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">For Sale</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
             <li><a href="for-sale.html" onclick="closeNav()">Available Homes</a></li>
-            <li><a href="for-sale.html" onclick="closeNav()">Build to Suit</a></li>
+            <li><a href="lots.html" onclick="closeNav()">Lots</a></li>
           </ul>
         </li>
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">About</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">About</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
-            <li><a href="about.html" onclick="closeNav()">Meet the Castles</a></li>
-            <li><a href="about.html" onclick="closeNav()">Our Story</a></li>
-            <li><a href="about.html" onclick="closeNav()">Community</a></li>
-            <li><a href="about.html" onclick="closeNav()">Our Partners</a></li>
+            <li><a href="about.html" onclick="closeNav()">Meet the Team</a></li>
+            <li><a href="our-story.html" onclick="closeNav()">Our Story</a></li>
+            <li><a href="community.html" onclick="closeNav()">Community</a></li>
+            <li><a href="partners.html" onclick="closeNav()">Our Partners</a></li>
           </ul>
         </li>
         <li class="overlay-item">
           <div class="overlay-item-header">
-            <span class="overlay-link">Financing</span>
+            <a class="overlay-link" href="#" onclick="toggleSub(this.parentElement.querySelector('.overlay-toggle')); return false;">Financing</a>
             <button class="overlay-toggle" aria-label="Expand" onclick="toggleSub(this)">+</button>
           </div>
           <ul class="sub-menu">
@@ -121,6 +120,7 @@
           <li>Full design and customization options</li>
         </ul>
         <a href="contact.html" class="btn-primary">Talk to Kyle</a>
+        <p class="commercial-note">* Commercial construction is also available. <a href="contact.html">Contact Kyle directly</a> to discuss your project.</p>
       </div>
       <div class="col-image reveal reveal-delay-1">
         <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80" alt="Idaho land landscape">
@@ -141,6 +141,19 @@
     </div>
   </div>
 
+  <div class="cta-band">
+    <div class="cta-image" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80');background-size:cover;background-position:center;"></div>
+    <div class="cta-content">
+      <p class="section-eyebrow" style="color:var(--crimson-light);">Ready to Build?</p>
+      <h2 class="section-title light" style="margin-bottom:20px;">Your Land,<br>Our <em>Expertise</em></h2>
+      <p class="cta-body">Already have a lot picked out? Let's talk about what we can build on it — no obligation.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-primary">Get In Touch</a>
+        <a href="tel:2083091547" class="btn-outline-light">Call (208) 309-1547</a>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="footer-top">
       <div>
@@ -157,7 +170,6 @@
         <ul class="footer-links">
           <li><a href="residential.html">Custom Residential</a></li>
           <li><a href="your-lot.html">Build on Your Lot</a></li>
-          <li><a href="commercial.html">Commercial</a></li>
           <li><a href="remodel.html">Remodels</a></li>
           <li><a href="for-sale.html">For Sale</a></li>
         </ul>
@@ -166,7 +178,7 @@
         <p class="footer-col-title">Company</p>
         <ul class="footer-links">
           <li><a href="about.html">About Us</a></li>
-          <li><a href="about.html">Meet the Castles</a></li>
+          <li><a href="about.html">Meet the Team</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="financing.html">Financing</a></li>
           <li><a href="contact.html">Contact</a></li>
