@@ -1,12 +1,45 @@
 /* ============================================================
-   variables.css  —  Tokens + reset
+   variables.css  —  Design tokens, fluid spacing, global reset
    Castle's Custom Homes
+   ============================================================
+
+   This is the SINGLE SOURCE OF TRUTH for all design decisions.
+   Change a color, font, or spacing value HERE and it updates
+   everywhere on the site automatically.
+
+   Load order: this file must be loaded FIRST in every page's
+   <head>, before all other CSS files.
    ============================================================ */
 
+
+/* ── Global box-sizing reset ────────────────────────────────
+   Makes width/height calculations include padding and border,
+   which is almost always what you want. Applied to every element.
+   ─────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+
 :root {
-  /* Brand colors */
+
+  /* ── Color palette ─────────────────────────────────────────
+     Neutrals (light → dark):
+       --cream      off-white page backgrounds, cream sections
+       --stone      borders, dividers, light backgrounds
+       --warm-gray  secondary/muted text, labels
+       --mid        body copy on light backgrounds
+       --dark       dark sections, nav overlay, sidebars
+                    also used as the primary text color on dark bgs
+
+     Brand accents:
+       --gold          unused in most places, kept for accents
+       --gold-light    headings / numbers on dark backgrounds
+       --crimson       primary brand color — buttons, borders, accents
+       --crimson-light eyebrow labels, hover states, step numbers
+       --crimson-muted darker crimson for subtle backgrounds
+
+       --white      near-white, used for text on dark backgrounds
+                    and as the card/form background color
+  ─────────────────────────────────────────────────────────── */
   --cream:         #F5F1EA;
   --stone:         #E8E2D8;
   --warm-gray:     #9C9488;
@@ -19,23 +52,53 @@
   --crimson-muted: #7A1829;
   --white:         #FDFCF9;
 
-  /* Fonts */
+  /* ── Typography ─────────────────────────────────────────────
+     Two font families are loaded via Google Fonts in each page's <head>:
+       Cormorant Garamond — serif, used for all headings, large display
+                            text, numbers, signatures, and italic accents
+       Jost               — clean geometric sans, used for all body copy,
+                            labels, buttons, navigation, and UI text
+
+     To change fonts site-wide, update the Google Fonts URL in each
+     page's <head> AND update these two variables.
+  ─────────────────────────────────────────────────────────── */
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans:  'Jost', sans-serif;
 
-  /*
-   * Fluid horizontal padding
-   * 320px → 20px gutter   1600px+ → 100px gutter
-   */
+  /* ── Fluid horizontal gutter ────────────────────────────────
+     This is the left/right padding applied to all full-width sections.
+     It scales smoothly with viewport width using CSS clamp():
+       320px viewport → 20px gutter (smallest phones)
+       ~960px viewport → ~60px gutter (tablets)
+       1600px+ viewport → 100px gutter (large desktops)
+
+     Used as: padding: 0 var(--gutter)
+     or:      padding: var(--section-v) var(--gutter)
+  ─────────────────────────────────────────────────────────── */
   --gutter: clamp(20px, 6.25vw, 100px);
 
-  /* Fluid vertical section padding: 56px → 120px */
+  /* ── Fluid vertical section padding ────────────────────────
+     Applied as the top/bottom padding on most content sections.
+     Scales from 56px on phones to 120px on large desktops.
+     Keeps vertical rhythm consistent without needing breakpoints.
+  ─────────────────────────────────────────────────────────── */
   --section-v: clamp(56px, 9vw, 120px);
 
-  /* Cap content width on very wide screens */
+  /* ── Maximum content width ───────────────────────────────────
+     Prevents content from stretching too wide on 4K monitors.
+     Applied via max-width: var(--max-w) on inner content wrappers.
+     The outer section can still be full-width (e.g. colored backgrounds).
+  ─────────────────────────────────────────────────────────── */
   --max-w: 1500px;
 }
 
+
+/* ── Base HTML/body styles ──────────────────────────────────
+   scroll-behavior: smooth enables smooth scrolling when
+   navigating to anchor links (#section-id).
+   overflow-x: hidden prevents any content from causing
+   a horizontal scrollbar.
+─────────────────────────────────────────────────────────── */
 html { scroll-behavior: smooth; }
 
 body {
@@ -45,5 +108,9 @@ body {
   overflow-x: hidden;
 }
 
+/* Prevent images from ever overflowing their container */
 img { display: block; max-width: 100%; }
-a   { color: inherit; }
+
+/* Anchor tags inherit their parent's color by default
+   (individual link styles are set where needed) */
+a { color: inherit; }

@@ -1,91 +1,210 @@
 /* ============================================================
-   nav.css  —  Fixed top bar + full-screen overlay menu
+   nav.css  —  Fixed top navigation bar + full-screen overlay menu
    Castle's Custom Homes
+
+   Two distinct components live here:
+
+   1. SITE-NAV (.site-nav)
+      The fixed bar at the top of every page. Contains the logo
+      on the left and the phone number + hamburger button on the right.
+      Has three visual states controlled by JS (nav.js):
+        .transparent-hero  — fully transparent, used on the home page
+                             hero where the full-bleed photo shows through
+        .scrolled          — darkens when user scrolls down on hero pages
+        .solid             — always dark, used on all interior pages
+
+   2. NAV OVERLAY (.nav-overlay)
+      A full-screen dark panel that slides in from the top when the
+      hamburger is clicked. Contains the main navigation links,
+      sub-menu accordions (Build With Us, For Sale, About, Financing),
+      and a footer with contact info and social links.
+
+   Nav behavior is controlled by js/nav.js.
+   The data-nav-style attribute on <body> determines which state
+   the nav starts in:
+     <body data-nav-style="hero">   → transparent, darkens on scroll
+     <body data-nav-style="solid">  → always dark
    ============================================================ */
 
-/* ── Top bar ─────────────────────────────────────────────── */
+
+/* ═══════════════════════════════════════════════════════════
+   SITE-NAV — Fixed top bar
+═══════════════════════════════════════════════════════════ */
+
 .site-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  height: clamp(60px, 7vw, 84px);
+  position: fixed;         /* Stays at top while scrolling */
+  top: 0; left: 0; right: 0;
+  z-index: 200;            /* Above all page content (overlay is 150) */
+  height: clamp(60px,7vw,84px);   /* Fluid height: smaller on phones */
   padding: 0 var(--gutter);
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   transition: background .4s, backdrop-filter .4s;
 }
-.site-nav.transparent-hero { background: transparent; }
-.site-nav.scrolled,
-.site-nav.solid { background: rgba(28,26,23,.96); backdrop-filter: blur(14px); }
 
+/* Home page: nav starts transparent so hero photo shows through */
+.site-nav.transparent-hero { background: transparent; }
+
+/* Home page: darkens after user scrolls 60px (set in nav.js) */
+.site-nav.scrolled { background: rgba(28,26,23,.94); backdrop-filter: blur(14px); }
+
+/* All interior pages: always dark with blur */
+.site-nav.solid    { background: rgba(28,26,23,.96); backdrop-filter: blur(14px); }
+
+/* ── Logo ── */
 .nav-logo {
   font-family: var(--font-serif);
   font-size: clamp(15px, 1.6vw, 22px);
-  font-weight: 400; letter-spacing: .03em;
-  color: var(--white); text-decoration: none;
-  z-index: 10; position: relative; line-height: 1;
-  /* prevent wrapping on small screens */
-  white-space: nowrap;
+  font-weight: 400;
+  letter-spacing: .03em;
+  color: var(--white);
+  text-decoration: none;
+  z-index: 10;             /* Stays above the overlay clip animation */
+  position: relative;
+  line-height: 1;
+  white-space: nowrap;     /* Prevents logo from wrapping on small screens */
 }
+/* The red apostrophe in "Castle's" */
 .nav-logo .apostrophe { color: var(--crimson-light); }
 
-.nav-right { display: flex; align-items: center; gap: 20px; z-index: 10; }
+/* ── Right side: phone + hamburger ── */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 28px);
+  z-index: 10;
+  position: relative;
+}
 
 .nav-phone {
-  font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
-  color: rgba(255,255,255,.7); text-decoration: none; transition: color .2s;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+  text-decoration: none;
+  transition: color .2s;
   white-space: nowrap;
 }
 .nav-phone:hover { color: var(--gold-light); }
 
-/* ── Hamburger ────────────────────────────────────────────── */
+
+/* ═══════════════════════════════════════════════════════════
+   HAMBURGER BUTTON
+   Three horizontal lines that animate into an X when open.
+   The animation is achieved by rotating/scaling the spans
+   with CSS transitions, triggered by adding .open class via JS.
+═══════════════════════════════════════════════════════════ */
+
 .hamburger {
-  display: flex; flex-direction: column; justify-content: center;
-  gap: 5px; width: 40px; height: 40px;
-  background: none; border: none; cursor: pointer; padding: 6px; flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px; height: 40px;
+  background: none; border: none;
+  cursor: pointer;
+  padding: 6px;
+  flex-shrink: 0;
 }
 .hamburger span {
-  display: block; height: 1.5px; background: var(--white);
+  display: block;
+  height: 1.5px;
+  background: var(--white);
+  /* Animate all line changes: rotation, opacity, width */
   transition: transform .4s cubic-bezier(.23,1,.32,1), opacity .3s, width .3s;
   transform-origin: center;
 }
+/* Three lines at slightly different widths for visual interest */
 .hamburger span:nth-child(1) { width: 28px; }
 .hamburger span:nth-child(2) { width: 20px; }
 .hamburger span:nth-child(3) { width: 24px; }
 .hamburger:hover span { background: var(--gold-light); }
-.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); width: 24px; }
+
+/* When .open is added by JS: lines rotate and collapse into an X */
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg);  width: 24px; }
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); width: 24px; }
 
-/* ── Full-screen overlay ──────────────────────────────────── */
+
+/* ═══════════════════════════════════════════════════════════
+   FULL-SCREEN OVERLAY
+   The dark panel that covers the entire screen when the nav
+   is opened. Uses clip-path animation to slide in from the top.
+
+   Opening: .open class added by JS → clip-path expands from top
+   Closing: .open class removed   → clip-path collapses back up
+═══════════════════════════════════════════════════════════ */
+
 .nav-overlay {
-  position: fixed; inset: 0; z-index: 150; background: var(--dark);
-  display: flex; pointer-events: none; opacity: 0;
+  position: fixed;
+  inset: 0;               /* Covers entire viewport */
+  z-index: 150;           /* Below nav bar (z-index 200) so bar stays visible */
+  background: var(--dark);
+  display: flex;
+  pointer-events: none;   /* Ignore clicks when closed */
+  opacity: 0;
+  /* clip-path animates the reveal: inset(0 0 100% 0) = completely hidden */
   clip-path: inset(0 0 100% 0);
   transition: clip-path .6s cubic-bezier(.76,0,.24,1), opacity .4s;
 }
-.nav-overlay.open { pointer-events: all; opacity: 1; clip-path: inset(0 0 0% 0); }
-
-.nav-overlay-inner {
-  width: 100%; display: flex; flex-direction: column;
-  padding: clamp(80px,12vw,140px) var(--gutter) clamp(32px,5vw,64px);
-  overflow-y: auto;
+.nav-overlay.open {
+  pointer-events: all;    /* Accept clicks when open */
+  opacity: 1;
+  clip-path: inset(0 0 0% 0);  /* Fully revealed */
 }
 
+/* Inner container: column layout with padding that accounts for the fixed nav height */
+.nav-overlay-inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(80px,12vw,140px) var(--gutter) clamp(32px,5vw,64px);
+  overflow-y: auto;       /* Scroll if content is taller than viewport */
+}
+
+/* Small red accent bar near the top of the overlay */
 .overlay-accent {
   position: absolute;
-  top: clamp(56px,7vw,88px); left: var(--gutter);
-  width: 48px; height: 3px; background: var(--crimson);
+  top: clamp(56px,7vw,88px);
+  left: var(--gutter);
+  width: 48px; height: 3px;
+  background: var(--crimson);
 }
 
-/* Menu items */
+
+/* ═══════════════════════════════════════════════════════════
+   OVERLAY MENU ITEMS
+   Each top-level nav item (.overlay-item) contains:
+     - An .overlay-item-header with the link/label + optional + button
+     - An optional .sub-menu (hidden by default, toggled by JS)
+
+   Items animate in with a staggered delay using transition-delay
+   on the nth-child selectors below.
+═══════════════════════════════════════════════════════════ */
+
 .overlay-menu { list-style: none; flex: 1; }
-.overlay-item  { border-bottom: 1px solid rgba(255,255,255,.07); overflow: hidden; }
+
+.overlay-item {
+  border-bottom: 1px solid rgba(255,255,255,.07);  /* Subtle separator */
+  overflow: hidden;
+}
 
 .overlay-item-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: clamp(12px,1.8vw,22px) 0; cursor: pointer;
-  opacity: 0; transform: translateY(18px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(12px,1.8vw,22px) 0;
+  cursor: pointer;
+  /* Start hidden + shifted down; animates in when overlay opens */
+  opacity: 0;
+  transform: translateY(18px);
   transition: opacity .5s, transform .5s;
 }
+/* When overlay opens, all headers become visible */
 .nav-overlay.open .overlay-item-header { opacity: 1; transform: none; }
+/* Staggered entrance — each item appears slightly after the previous */
 .nav-overlay.open .overlay-item:nth-child(1) .overlay-item-header { transition-delay: .08s; }
 .nav-overlay.open .overlay-item:nth-child(2) .overlay-item-header { transition-delay: .14s; }
 .nav-overlay.open .overlay-item:nth-child(3) .overlay-item-header { transition-delay: .20s; }
@@ -93,62 +212,131 @@
 .nav-overlay.open .overlay-item:nth-child(5) .overlay-item-header { transition-delay: .32s; }
 .nav-overlay.open .overlay-item:nth-child(6) .overlay-item-header { transition-delay: .38s; }
 
+/* ── Main nav link (large serif text) ── */
 .overlay-link {
   font-family: var(--font-serif);
-  font-size: clamp(26px, 4.5vw, 54px);
-  font-weight: 300; color: var(--white); text-decoration: none;
-  line-height: 1; transition: color .2s;
+  font-size: clamp(26px, 4.5vw, 54px);  /* Big on desktop, still readable on phones */
+  font-weight: 300;
+  color: var(--white);
+  text-decoration: none;
+  line-height: 1;
+  transition: color .2s;
 }
 .overlay-link:hover { color: var(--crimson-light); }
 
+/* ── + / × toggle button ── (opens/closes sub-menu) */
 .overlay-toggle {
-  width: clamp(32px,3.5vw,42px); height: clamp(32px,3.5vw,42px);
+  width: clamp(32px,3.5vw,42px);
+  height: clamp(32px,3.5vw,42px);
   display: flex; align-items: center; justify-content: center;
-  background: none; border: 1px solid rgba(255,255,255,.15);
-  cursor: pointer; color: var(--warm-gray); font-size: 18px; flex-shrink: 0;
+  background: none;
+  border: 1px solid rgba(255,255,255,.15);
+  cursor: pointer;
+  color: var(--warm-gray);
+  font-size: 18px;
+  flex-shrink: 0;
+  /* Rotates 45° to turn + into × when sub-menu is open */
   transition: border-color .2s, color .2s, transform .35s cubic-bezier(.23,1,.32,1), background .2s;
 }
 .overlay-toggle:hover  { border-color: var(--crimson-light); color: var(--crimson-light); background: rgba(168,33,58,.1); }
 .overlay-toggle.open   { transform: rotate(45deg); border-color: var(--crimson-light); color: var(--crimson-light); }
 
-/* Sub-menus */
-.sub-menu { list-style: none; max-height: 0; overflow: hidden; padding-left: 4px; transition: max-height .45s cubic-bezier(.23,1,.32,1); }
-.sub-menu.open { max-height: 400px; }
+
+/* ═══════════════════════════════════════════════════════════
+   SUB-MENUS
+   Hidden by default (max-height: 0), expanded by JS adding .open.
+   Max-height animation creates a smooth reveal effect without
+   needing to know the exact height of the content.
+═══════════════════════════════════════════════════════════ */
+
+.sub-menu {
+  list-style: none;
+  max-height: 0;           /* Collapsed */
+  overflow: hidden;
+  padding-left: 4px;
+  transition: max-height .45s cubic-bezier(.23,1,.32,1);
+}
+.sub-menu.open { max-height: 400px; }  /* Expanded — large enough for any content */
+
 .sub-menu li { padding: 5px 0; }
 .sub-menu li:last-child { padding-bottom: 12px; }
+
 .sub-menu a {
-  font-family: var(--font-sans); font-size: 12px; font-weight: 400;
-  letter-spacing: .14em; text-transform: uppercase; color: var(--warm-gray);
-  text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   transition: color .2s;
 }
-.sub-menu a::before { content:''; display:block; width:18px; height:1px; background:var(--crimson); flex-shrink:0; transition: width .3s; }
+/* Short red line before each sub-menu item; expands on hover */
+.sub-menu a::before {
+  content: '';
+  display: block;
+  width: 18px; height: 1px;
+  background: var(--crimson);
+  flex-shrink: 0;
+  transition: width .3s;
+}
 .sub-menu a:hover { color: var(--white); }
 .sub-menu a:hover::before { width: 28px; background: var(--crimson-light); }
 
-/* Overlay footer */
+
+/* ═══════════════════════════════════════════════════════════
+   OVERLAY FOOTER
+   Contact info and social links at the bottom of the overlay.
+   Fades in last (transition-delay: 0.45s) after the menu items.
+═══════════════════════════════════════════════════════════ */
+
 .overlay-footer {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  flex-wrap: wrap; gap: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
   padding-top: clamp(24px,4vw,44px);
   border-top: 1px solid rgba(255,255,255,.07);
-  opacity: 0; transform: translateY(10px);
-  transition: opacity .5s .45s, transform .5s .45s;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .5s .45s, transform .5s .45s;  /* Delayed entrance */
 }
 .nav-overlay.open .overlay-footer { opacity: 1; transform: none; }
-.overlay-contact-label { font-size: 10px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--warm-gray); margin-bottom: 5px; }
-.overlay-contact-val   { font-family: var(--font-serif); font-size: clamp(16px,2vw,22px); font-weight: 300; color: var(--white); }
+
+.overlay-contact-label {
+  font-size: 10px; font-weight: 500; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--warm-gray); margin-bottom: 5px;
+}
+.overlay-contact-val {
+  font-family: var(--font-serif);
+  font-size: clamp(16px,2vw,22px);
+  font-weight: 300;
+  color: var(--white);
+}
 .overlay-contact-val a { color: inherit; text-decoration: none; transition: color .2s; }
 .overlay-contact-val a:hover { color: var(--crimson-light); }
+
+/* Social icon links (IG / FB / TW) */
 .overlay-socials { display: flex; gap: 10px; }
 .overlay-social {
-  width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.15);
+  width: 34px; height: 34px;
+  border: 1px solid rgba(255,255,255,.15);
   display: flex; align-items: center; justify-content: center;
-  color: var(--warm-gray); text-decoration: none; font-size: 11px; font-weight: 500;
+  color: var(--warm-gray);
+  text-decoration: none;
+  font-size: 11px; font-weight: 500;
   transition: border-color .2s, color .2s;
 }
 .overlay-social:hover { border-color: var(--crimson-light); color: var(--crimson-light); }
 
-/* ── Responsive ───────────────────────────────────────────── */
-@media (max-width: 480px) { .nav-phone { display: none; } }
 
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════ */
+
+/* Hide phone number on small phones — not enough room */
+@media (max-width: 480px) { .nav-phone { display: none; } }
