@@ -13,6 +13,15 @@ __pycache__/
 *.json.bak
 *.map
 
+# Environment and sensitive files
+.env
+.env.local
+.env.production
+*.key
+*.pem
+config.json
+secrets.json
+
 # OS files
 .DS_Store
 Thumbs.db

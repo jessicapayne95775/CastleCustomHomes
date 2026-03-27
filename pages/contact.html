@@ -11,6 +11,10 @@
   <link rel="stylesheet" href="../css/nav.css">
   <link rel="stylesheet" href="../css/footer.css">
   <link rel="stylesheet" href="../css/pages.css">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 </head>
 <body data-nav-style="solid">
   <nav class="site-nav" id="main-nav">
@@ -88,9 +92,9 @@
         <div>
           <p class="overlay-contact-label">Follow Us</p>
           <div class="overlay-socials">
-            <a href="https://instagram.com/castlescustomhomes" class="overlay-social" target="_blank">IG</a>
-            <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="overlay-social" target="_blank">FB</a>
-            <a href="https://twitter.com/castlescustom" class="overlay-social" target="_blank">TW</a>
+            <a href="https://instagram.com/castlescustomhomes" class="overlay-social" target="_blank" rel="noopener noreferrer">IG</a>
+            <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="overlay-social" target="_blank" rel="noopener noreferrer">FB</a>
+            <a href="https://twitter.com/castlescustom" class="overlay-social" target="_blank" rel="noopener noreferrer">TW</a>
           </div>
         </div>
       </div>
@@ -113,11 +117,11 @@
       <p class="section-eyebrow">Send a Message</p>
       <h2 class="section-title" style="margin-bottom:36px;">We'll Get Back<br>to <em>You Quickly</em></h2>
       <div class="form-row">
-        <div class="form-group"><label>First Name</label><input type="text" placeholder="Kyle"></div>
-        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Castle"></div>
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="Kyle" maxlength="50" autocomplete="given-name"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Castle" maxlength="50" autocomplete="family-name"></div>
       </div>
-      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@email.com"></div>
-      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="(208) 555-0000"></div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@email.com" maxlength="100" autocomplete="email"></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="(208) 555-0000" maxlength="20" autocomplete="tel"></div>
       <div class="form-group">
         <label>Project Type</label>
         <select>
@@ -141,8 +145,8 @@
           <option>5+ years</option>
         </select>
       </div>
-      <div class="form-group"><label>How Did You Hear About Us?</label><input type="text" placeholder="Google, referral, social media..."></div>
-      <div class="form-group"><label>Message</label><textarea rows="5" placeholder="Tell us about your project, timeline, or any questions you have..."></textarea></div>
+      <div class="form-group"><label>How Did You Hear About Us?</label><input type="text" placeholder="Google, referral, social media..." maxlength="100"></div>
+      <div class="form-group"><label>Message</label><textarea rows="5" placeholder="Tell us about your project, timeline, or any questions you have..." maxlength="2000"></textarea></div>
       <button class="btn-primary" style="width:100%;padding:18px;" onclick="handleFormSubmit()">Send Message</button>
       <p id="form-success" style="display:none;margin-top:16px;font-size:14px;color:var(--crimson);font-weight:400;letter-spacing:0.06em;">✓ Thanks! We'll be in touch within one business day.</p>
     </div>
@@ -173,9 +177,9 @@
         <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
       </div>
       <div style="display:flex;gap:16px;margin-top:36px;">
-        <a href="https://instagram.com/castlescustomhomes" class="footer-social" target="_blank">IG</a>
-        <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="footer-social" target="_blank">FB</a>
-        <a href="https://twitter.com/castlescustom" class="footer-social" target="_blank">TW</a>
+        <a href="https://instagram.com/castlescustomhomes" class="footer-social" target="_blank" rel="noopener noreferrer">IG</a>
+        <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="footer-social" target="_blank" rel="noopener noreferrer">FB</a>
+        <a href="https://twitter.com/castlescustom" class="footer-social" target="_blank" rel="noopener noreferrer">TW</a>
       </div>
     </div>
   </div>
@@ -188,9 +192,9 @@
         <p class="footer-brand">Castle<span>'</span>s Custom Homes</p>
         <p class="footer-tagline">Quality builders serving Twin Falls and the Magic Valley, Idaho. Family-owned, locally rooted, community proud.</p>
         <div class="footer-socials">
-          <a href="https://instagram.com/castlescustomhomes" class="footer-social" target="_blank">IG</a>
-          <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="footer-social" target="_blank">FB</a>
-          <a href="https://twitter.com/castlescustom" class="footer-social" target="_blank">TW</a>
+          <a href="https://instagram.com/castlescustomhomes" class="footer-social" target="_blank" rel="noopener noreferrer">IG</a>
+          <a href="https://facebook.com/Castles-Custom-Homes-271304149964379" class="footer-social" target="_blank" rel="noopener noreferrer">FB</a>
+          <a href="https://twitter.com/castlescustom" class="footer-social" target="_blank" rel="noopener noreferrer">TW</a>
         </div>
       </div>
       <div>
@@ -217,7 +221,7 @@
         <ul class="footer-links">
           <li><a href="financing.html">Mortgage Calculator</a></li>
           <li><a href="contact.html">Get a Quote</a></li>
-          <li><a href="http://www.castlescornercorp.com" target="_blank">Castle's Corner Stores</a></li>
+          <li><a href="http://www.castlescornercorp.com" target="_blank" rel="noopener noreferrer">Castle's Corner Stores</a></li>
           <li><a href="tel:2083091547">(208) 309-1547</a></li>
         </ul>
       </div>
