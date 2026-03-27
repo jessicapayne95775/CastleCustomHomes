@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls *.py)",
+      "Bash(python add_lazy_loading.py)"
+    ]
+  }
+}
