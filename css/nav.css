@@ -64,9 +64,21 @@
   position: relative;
   line-height: 1;
   white-space: nowrap;     /* Prevents logo from wrapping on small screens */
+  display: flex;
+  align-items: center;
 }
 /* The red apostrophe in "Castle's" */
 .nav-logo .apostrophe { color: var(--crimson-light); }
+
+/* Logo image styling */
+.nav-logo img {
+  height: clamp(32px, 4vw, 48px) !important;  /* Responsive height that fits nicely in nav */
+  width: auto !important;                      /* Maintain aspect ratio */
+  max-width: 200px !important;                 /* Cap maximum width */
+  max-height: 48px !important;                 /* Cap maximum height */
+  display: block !important;
+  object-fit: contain !important;
+}
 
 /* ── Right side: phone + hamburger ── */
 .nav-right {
